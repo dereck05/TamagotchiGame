@@ -5,36 +5,42 @@
  */
 package Modelo;
 
+import Ejercicios.Ejercicio;
+import Enfermedades.Enfermedad;
+import Estrategia.IStrategy;
+import Habilidades.Habilidad;
+import Medicamentos.Medicamento;
+
 /**
  *
  * @author naty9
  */
 public class Facade {
     
-    public IStrategy crearEstrategia(){
-        
-    }
-    
-    public AbstractAtaque crearAtaque(){
-    }
-    
-    public AbstractEjercicio crearEjercicio(){
-        
-    }
-    
-    public AbstractEnfermedad crearEnfermedad(){
-        
-    }
-    
-    public void crearAlimento(){
-        
-    }
-    
-    public AbstractMedicamento crearMedicamento(){
-        
-    }
-    
-    public IPersonaje crearPersonaje(){
-        
-    }
+//    public IStrategy crearEstrategia(){
+//        
+//    }
+//    
+//    public Habilidad crearAtaque(){
+//    }
+//    
+//    public Ejercicio crearEjercicio(){
+//        
+//    }
+//    
+//    public Enfermedad crearEnfermedad(){
+//        
+//    }
+//    
+//    public void crearAlimento(){
+//        
+//    }
+//    
+//    public Medicamento crearMedicamento(){
+//        
+//    }
+//    
+//    public PersonajeGame crearPersonaje(){
+//        
+//    }
 }

@@ -5,21 +5,26 @@
  */
 package Modelo;
 
+import Enfermedades.Enfermedad;
+import Estrategia.IStrategy;
+import Habilidades.Habilidad;
+import Model.Personaje;
+import java.util.ArrayList;
+
 
 public class PersonajeGame extends Personaje  {
     private int edad;
     private ArrayList<IStrategy> comportamientos;
-    private ArrayList<AbstractAtaque> ataques;
+    private ArrayList<Habilidad> ataques;
     private Estado estado;
     private Apariencia apariencia;
     private String tipo;
-    private AbstractEnfermedad enfermedadActual;
+    private Enfermedad enfermedadActual;
 
-    public int getEdad() {
-        return edad;
-    }
+    
 
-    public PersonajeGame(int edad, ArrayList<IStrategy> comportamientos, ArrayList<AbstractAtaque> ataques, Estado estado, Apariencia apariencia, String tipo, AbstractEnfermedad enfermedadActual) {
+    public PersonajeGame(String nombre, String imagen,int edad, ArrayList<IStrategy> comportamientos, ArrayList<Habilidad> ataques, Estado estado, Apariencia apariencia, String tipo, Enfermedad enfermedadActual) {
+        super(nombre,imagen);
         this.edad = edad;
         this.comportamientos = comportamientos;
         this.ataques = ataques;
@@ -28,7 +33,9 @@ public class PersonajeGame extends Personaje  {
         this.tipo = tipo;
         this.enfermedadActual = enfermedadActual;
     }
-
+    public int getEdad() {
+        return edad;
+    }
     public void setEdad(int edad) {
         this.edad = edad;
     }
@@ -41,11 +48,11 @@ public class PersonajeGame extends Personaje  {
         this.comportamientos = comportamientos;
     }
 
-    public ArrayList<AbstractAtaque> getAtaques() {
+    public ArrayList<Habilidad> getAtaque() {
         return ataques;
     }
 
-    public void setAtaques(ArrayList<AbstractAtaque> ataques) {
+    public void setAtaque(ArrayList<Habilidad> ataques) {
         this.ataques = ataques;
     }
 
@@ -73,11 +80,11 @@ public class PersonajeGame extends Personaje  {
         this.tipo = tipo;
     }
 
-    public AbstractEnfermedad getEnfermedadActual() {
+    public Enfermedad getEnfermedadActual() {
         return enfermedadActual;
     }
 
-    public void setEnfermedadActual(AbstractEnfermedad enfermedadActual) {
+    public void setEnfermedadActual(Enfermedad enfermedadActual) {
         this.enfermedadActual = enfermedadActual;
     }
     

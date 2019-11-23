@@ -5,19 +5,23 @@
  */
 package Modelo;
 
+import Alimento.Alimento;
+import Medicamentos.Medicamento;
+import java.util.ArrayList;
+
 /**
  *
  * @author derec
  */
 public class Bodega {
-    private ArrayList<AbstractMedicamento> medicamentos;
+    private ArrayList<Medicamento> medicamentos;
     private ArrayList<Alimento> alimentos;
 
-    public ArrayList<AbstractMedicamento> getMedicamentos() {
+    public ArrayList<Medicamento> getMedicamentos() {
         return medicamentos;
     }
 
-    public void setMedicamentos(ArrayList<AbstractMedicamento> medicamentos) {
+    public void setMedicamentos(ArrayList<Medicamento> medicamentos) {
         this.medicamentos = medicamentos;
     }
 

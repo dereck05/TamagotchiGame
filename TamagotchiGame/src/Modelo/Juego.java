@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import Ejercicios.Ejercicio;
+import Enfermedades.Enfermedad;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,8 +17,8 @@ import java.util.Date;
 public class Juego {
 
     private PersonajeGame personaje;
-    private ArrayList<AbstractDeporte> deportes;
-    private ArrayList<AbstractEnfermedad> enfermedades;
+    private ArrayList<Ejercicio> deportes;
+    private ArrayList<Enfermedad> enfermedades;
     private Bodega huerto;
     private Bodega bodega;
     private Date tiempo;
@@ -31,19 +33,19 @@ public class Juego {
         this.personaje = personaje;
     }
 
-    public ArrayList<AbstractDeporte> getDeportes() {
+    public ArrayList<Ejercicio> getDeportes() {
         return deportes;
     }
 
-    public void setDeportes(ArrayList<AbstractDeporte> deportes) {
+    public void setDeportes(ArrayList<Ejercicio> deportes) {
         this.deportes = deportes;
     }
 
-    public ArrayList<AbstractEnfermedad> getEnfermedades() {
+    public ArrayList<Enfermedad> getEnfermedades() {
         return enfermedades;
     }
 
-    public void setEnfermedades(ArrayList<AbstractEnfermedad> enfermedades) {
+    public void setEnfermedades(ArrayList<Enfermedad> enfermedades) {
         this.enfermedades = enfermedades;
     }
 
