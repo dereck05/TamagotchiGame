@@ -88,8 +88,6 @@ public class Juego {
     public void setMinutosPorYear(int minutosPorYear) {
         this.minutosPorYear = minutosPorYear;
     }
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+    
     
 }

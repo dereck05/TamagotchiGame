@@ -15,6 +15,10 @@ public class Estado {
     private int saludMental;
     private int saludFisica;
 
+    Estado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getHumor() {
         return humor;
     }

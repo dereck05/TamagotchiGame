@@ -19,11 +19,11 @@ public class PersonajeGame extends Personaje  {
     private Estado estado;
     private Apariencia apariencia;
     private String tipo;
-    private Enfermedad enfermedadActual;
+    private String enfermedadActual;
 
     
 
-    public PersonajeGame(String nombre, String imagen,int edad, ArrayList<IStrategy> comportamientos, ArrayList<Habilidad> ataques, Estado estado, Apariencia apariencia, String tipo, Enfermedad enfermedadActual) {
+    public PersonajeGame(String nombre, String imagen,int edad, ArrayList<IStrategy> comportamientos, ArrayList<Habilidad> ataques, Estado estado, Apariencia apariencia, String tipo, String enfermedad) {
         super(nombre,imagen);
         this.edad = edad;
         this.comportamientos = comportamientos;
@@ -31,7 +31,24 @@ public class PersonajeGame extends Personaje  {
         this.estado = estado;
         this.apariencia = apariencia;
         this.tipo = tipo;
-        this.enfermedadActual = enfermedadActual;
+        this.enfermedadActual = enfermedad;
+    }
+    public PersonajeGame(){}
+    
+    public void inicializar(){
+        this.edad = 0;
+        this.comportamientos = new ArrayList<IStrategy>();
+        this.ataques = new ArrayList<Habilidad>() ;
+        this.estado = new Estado();
+        this.apariencia = new Apariencia();
+        this.tipo = ""; // nose que es
+        this.enfermedadActual = "";
+    }
+    public void addComportamiento(IStrategy comp){
+        this.comportamientos.add(comp);
+    }
+    public void addHabilidad(Habilidad hab){
+        this.ataques.add(hab);
     }
     public int getEdad() {
         return edad;
@@ -80,11 +97,11 @@ public class PersonajeGame extends Personaje  {
         this.tipo = tipo;
     }
 
-    public Enfermedad getEnfermedadActual() {
+    public String getEnfermedadActual() {
         return enfermedadActual;
     }
 
-    public void setEnfermedadActual(Enfermedad enfermedadActual) {
+    public void setEnfermedadActual(String enfermedadActual) {
         this.enfermedadActual = enfermedadActual;
     }
     
