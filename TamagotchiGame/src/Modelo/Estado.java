@@ -10,52 +10,60 @@ package Modelo;
  * @author derec
  */
 public class Estado {
-    private int humor;
-    private int energia;
-    private int saludMental;
-    private int saludFisica;
-
-    Estado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private Humor Humor;
+    private int Energia;
+    private int SaludMental;
+    private int SaludFisica;
+    
+    public static enum Humor {
+        FELIZ,
+        TRISTE,
     }
 
-    public int getHumor() {
-        return humor;
+    public Estado() {
+        this.Humor = Humor.FELIZ;
+        this.Energia = 10;
+        this.SaludMental = 10;
+        this.SaludFisica = 10;
     }
 
-    public Estado(int humor, int energia, int saludMental, int saludFisica) {
-        this.humor = humor;
-        this.energia = energia;
-        this.saludMental = saludMental;
-        this.saludFisica = saludFisica;
+    public Humor getHumor() {
+        return Humor;
     }
 
-    public void setHumor(int humor) {
-        this.humor = humor;
+    public Estado(Humor humor, int energia, int saludMental, int saludFisica) {
+        this.Humor = humor;
+        this.Energia = energia;
+        this.SaludMental = saludMental;
+        this.SaludFisica = saludFisica;
+    }
+
+    public void setHumor(Humor humor) {
+        this.Humor = humor;
     }
 
     public int getEnergia() {
-        return energia;
+        return Energia;
     }
 
     public void setEnergia(int energia) {
-        this.energia = energia;
+        this.Energia = energia;
     }
 
     public int getSaludMental() {
-        return saludMental;
+        return SaludMental;
     }
 
     public void setSaludMental(int saludMental) {
-        this.saludMental = saludMental;
+        this.SaludMental = saludMental;
     }
 
     public int getSaludFisica() {
-        return saludFisica;
+        return SaludFisica;
     }
 
     public void setSaludFisica(int saludFisica) {
-        this.saludFisica = saludFisica;
+        this.SaludFisica = saludFisica;
     }
     
     

@@ -16,6 +16,13 @@ import java.util.ArrayList;
 public class Bodega {
     private ArrayList<Medicamento> medicamentos;
     private ArrayList<Alimento> alimentos;
+    
+    public Bodega(){
+        this.alimentos = new ArrayList<>();
+        this.medicamentos = new ArrayList<>();
+    }
+    
+  
 
     public ArrayList<Medicamento> getMedicamentos() {
         return medicamentos;

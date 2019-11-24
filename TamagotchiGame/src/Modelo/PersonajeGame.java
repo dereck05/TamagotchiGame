@@ -10,6 +10,7 @@ import Estrategia.IStrategy;
 import Habilidades.Habilidad;
 import Model.Personaje;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class PersonajeGame extends Personaje  {
@@ -44,6 +45,11 @@ public class PersonajeGame extends Personaje  {
         this.tipo = ""; // nose que es
         this.enfermedadActual = "";
     }
+    
+//    public void actualizar(HashMap<String,Integer> val){
+//        
+//        for(val.size())
+//    }
     public void addComportamiento(IStrategy comp){
         this.comportamientos.add(comp);
     }

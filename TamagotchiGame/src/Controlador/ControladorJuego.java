@@ -11,12 +11,14 @@ import Estrategia.IStrategy;
 import Factory.SuperFactory;
 import Habilidades.Habilidad;
 import Medicamentos.Medicamento;
+import Modelo.Facade;
 
 import Modelo.Juego;
 import Modelo.PersonajeGame;
 import Vista.Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,7 +28,7 @@ import javax.swing.JOptionPane;
 public class ControladorJuego implements ActionListener{
     private Vista vista;
     
-    public SuperFactory factory;
+    public Facade fachada;
     public ControladorJuego(Vista v){
         this.vista = v;
         this.vista.btnComer.addActionListener(this);
@@ -34,8 +36,7 @@ public class ControladorJuego implements ActionListener{
         this.vista.btnEnfermar.addActionListener(this);
         this.vista.btnHabilidad.addActionListener(this);
         this.vista.btnMedicina.addActionListener(this);
-        this.factory = new SuperFactory();
-
+        this.fachada = new Facade();
         this.vista.setVisible(true);
     }
     
@@ -69,27 +70,30 @@ public class ControladorJuego implements ActionListener{
     }
     
     public IStrategy comer(String option){
-        IStrategy resul = this.factory.crearEstrategia(option);
+        IStrategy resul = this.fachada.crearEstrategia(option);
+        
         return resul;
     }
     public Ejercicio ejercitarse(String option){
-        Ejercicio resul = this.factory.crearEjercicio(option);
+        Ejercicio resul = this.fachada.crearEjercicio(option);
+        HashMap<String,Integer> valores = resul.ejercitarse();
+        System.out.println(valores.get("Musculo"));
         return resul;
     }
     public Enfermedad enfermarse(String option){
-        Enfermedad resul = this.factory.crearEnfermedad(option);
+        Enfermedad resul = this.fachada.crearEnfermedad(option);
         return resul;
     }
     public IStrategy estrategia(String option){
-        IStrategy resul = this.factory.crearEstrategia(option);
+        IStrategy resul = this.fachada.crearEstrategia(option);
         return resul;
     }
     public Habilidad habilidad(String option){
-        Habilidad resul = this.factory.crearHabilidad(option);
+        Habilidad resul = this.fachada.crearHabilidad(option);
         return resul;
     }
     public Medicamento medicarse(String option){
-        Medicamento resul = this.factory.crearMedicamento(option);
+        Medicamento resul = this.fachada.crearMedicamento(option);
         return resul;
     }
   

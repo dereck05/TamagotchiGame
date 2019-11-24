@@ -10,71 +10,76 @@ package Modelo;
  * @author derec
  */
 public class Apariencia {
-    private int musculo;
-    private int grasa;
-    private int fuerza;
-    private int estatura;
-    private int rapidez;
-    private int esfuerzo;
+    private int Musculo;
+    private int Grasa;
+    private int Fuerza;
+    private int Estatura;
+    private int Rapidez;
+    private int Esfuerzo;
 
     public Apariencia(int musculo, int grasa, int fuerza, int estatura, int rapidez, int esfuerzo) {
-        this.musculo = musculo;
-        this.grasa = grasa;
-        this.fuerza = fuerza;
-        this.estatura = estatura;
-        this.rapidez = rapidez;
-        this.esfuerzo = esfuerzo;
+        this.Musculo = musculo;
+        this.Grasa = grasa;
+        this.Fuerza = fuerza;
+        this.Estatura = estatura;
+        this.Rapidez = rapidez;
+        this.Esfuerzo = esfuerzo;
     }
 
-    Apariencia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Apariencia() {
+        this.Musculo = 10;
+        this.Grasa = 10;
+        this.Fuerza = 10;
+        this.Estatura = 10;
+        this.Rapidez = 10;
+        this.Esfuerzo = 10;
     }
 
     public int getMusculo() {
-        return musculo;
+        return Musculo;
     }
 
     public void setMusculo(int musculo) {
-        this.musculo = musculo;
+        this.Musculo = musculo;
     }
 
     public int getGrasa() {
-        return grasa;
+        return Grasa;
     }
 
     public void setGrasa(int grasa) {
-        this.grasa = grasa;
+        this.Grasa = grasa;
     }
 
     public int getFuerza() {
-        return fuerza;
+        return Fuerza;
     }
 
     public void setFuerza(int fuerza) {
-        this.fuerza = fuerza;
+        this.Fuerza = fuerza;
     }
 
     public int getEstatura() {
-        return estatura;
+        return Estatura;
     }
 
     public void setEstatura(int estatura) {
-        this.estatura = estatura;
+        this.Estatura = estatura;
     }
 
     public int getRapidez() {
-        return rapidez;
+        return Rapidez;
     }
 
     public void setRapidez(int rapidez) {
-        this.rapidez = rapidez;
+        this.Rapidez = rapidez;
     }
 
     public int getEsfuerzo() {
-        return esfuerzo;
+        return Esfuerzo;
     }
 
     public void setEsfuerzo(int esfuerzo) {
-        this.esfuerzo = esfuerzo;
+        this.Esfuerzo = esfuerzo;
     }
 }
