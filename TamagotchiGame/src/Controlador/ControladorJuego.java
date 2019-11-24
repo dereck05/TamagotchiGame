@@ -69,37 +69,37 @@ public class ControladorJuego implements ActionListener{
     }
     
     public IStrategy comer(String option){
-        IStrategy resul = this.factory.crearEstrategia("Comer");
+        IStrategy resul = this.factory.crearEstrategia(option);
         return resul;
     }
     public Ejercicio ejercitarse(String option){
-        Ejercicio resul = this.factory.crearEjercicio("Boxeo");
+        Ejercicio resul = this.factory.crearEjercicio(option);
         return resul;
     }
     public Enfermedad enfermarse(String option){
-        Enfermedad resul = this.factory.crearEnfermedad("Diarrea");
+        Enfermedad resul = this.factory.crearEnfermedad(option);
         return resul;
     }
     public IStrategy estrategia(String option){
-        IStrategy resul = this.factory.crearEstrategia("Meditar");
+        IStrategy resul = this.factory.crearEstrategia(option);
         return resul;
     }
     public Habilidad habilidad(String option){
-        Habilidad resul = this.factory.crearHabilidad("Golpe");
+        Habilidad resul = this.factory.crearHabilidad(option);
         return resul;
     }
     public Medicamento medicarse(String option){
-        Medicamento resul = this.factory.crearMedicamento("Ibuprofeno");
+        Medicamento resul = this.factory.crearMedicamento(option);
         return resul;
     }
   
     public static void main(String[] args){
-        Vista vista = new Vista();
-        ControladorJuego c = new ControladorJuego(vista);
         Juego juego =new Juego();
         PersonajeGame personaje = new PersonajeGame();
-        while(true){
-            
-        }
+        personaje.inicializar();
+        Vista vista = new Vista();
+        ControladorJuego c = new ControladorJuego(vista);
+        
+        
     }
 }
