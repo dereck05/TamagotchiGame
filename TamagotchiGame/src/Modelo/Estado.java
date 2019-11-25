@@ -11,9 +11,12 @@ package Modelo;
  */
 public class Estado {
     private Humor Humor;
+    private int Alegria;
     private int Energia;
     private int SaludMental;
     private int SaludFisica;
+    private int Comida;
+    private int Liquidos;
     
     public static enum Humor {
         FELIZ,
@@ -22,20 +25,57 @@ public class Estado {
 
     public Estado() {
         this.Humor = Humor.FELIZ;
-        this.Energia = 10;
-        this.SaludMental = 10;
-        this.SaludFisica = 10;
+        this.Alegria = 90;
+        this.Energia = 100;
+        this.SaludMental = 100;
+        this.SaludFisica = 100;
+        this.Comida =0;
+        this.Liquidos = 0;
     }
 
     public Humor getHumor() {
         return Humor;
     }
 
-    public Estado(Humor humor, int energia, int saludMental, int saludFisica) {
+    public Estado(Humor humor, int energia, int saludMental, int saludFisica,int comida,int liquid) {
         this.Humor = humor;
         this.Energia = energia;
         this.SaludMental = saludMental;
         this.SaludFisica = saludFisica;
+        this.Comida = comida;
+        this.Liquidos = liquid;
+    }
+
+    public int getComidaIngerida() {
+        return Comida;
+    }
+
+    public void setComidaIngerida(int comidaIngerida) {
+        this.Comida = comidaIngerida;
+    }
+
+    public int getAlegria() {
+        return Alegria;
+    }
+
+    public void setAlegria(int Alegria) {
+        this.Alegria = Alegria;
+    }
+
+    public int getComida() {
+        return Comida;
+    }
+
+    public void setComida(int Comida) {
+        this.Comida = Comida;
+    }
+
+    public int getLiquidos() {
+        return Liquidos;
+    }
+
+    public void setLiquidos(int Liquidos) {
+        this.Liquidos = Liquidos;
     }
 
     public void setHumor(Humor humor) {
