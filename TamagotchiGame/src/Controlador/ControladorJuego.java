@@ -27,16 +27,23 @@ import javax.swing.JOptionPane;
  */
 public class ControladorJuego implements ActionListener{
     private Vista vista;
-    
+    private PersonajeGame personaje;
+    private Juego juego;
     public Facade fachada;
+    
     public ControladorJuego(Vista v){
         this.vista = v;
+        
         this.vista.btnComer.addActionListener(this);
         this.vista.btnEjercicio.addActionListener(this);
         this.vista.btnEnfermar.addActionListener(this);
         this.vista.btnHabilidad.addActionListener(this);
         this.vista.btnMedicina.addActionListener(this);
+        this.juego = new Juego();
         this.fachada = new Facade();
+        this.personaje = new PersonajeGame();
+        this.personaje.inicializar();
+        this.personaje.imprimirEstado();
         this.vista.setVisible(true);
     }
     
@@ -69,38 +76,43 @@ public class ControladorJuego implements ActionListener{
         }
     }
     
-    public IStrategy comer(String option){
+    public void comer(String option){
         IStrategy resul = this.fachada.crearEstrategia(option);
         
-        return resul;
+        //return resul;
     }
-    public Ejercicio ejercitarse(String option){
+    public void ejercitarse(String option){
         Ejercicio resul = this.fachada.crearEjercicio(option);
         HashMap<String,Integer> valores = resul.ejercitarse();
-        System.out.println(valores.get("Musculo"));
-        return resul;
+        this.personaje.actualizar(valores);
+        this.personaje.imprimirEstado();
     }
-    public Enfermedad enfermarse(String option){
+    public void enfermarse(String option){
         Enfermedad resul = this.fachada.crearEnfermedad(option);
-        return resul;
+        HashMap<String,Integer> valores = resul.Enfermarse();
+        this.personaje.actualizar(valores);
+        this.personaje.imprimirEstado();
     }
-    public IStrategy estrategia(String option){
+    public void estrategia(String option){
         IStrategy resul = this.fachada.crearEstrategia(option);
-        return resul;
+        HashMap<String,Integer> valores = resul.ejecutar();
+        this.personaje.actualizar(valores);
+        this.personaje.imprimirEstado();
     }
-    public Habilidad habilidad(String option){
+    public void habilidad(String option){
         Habilidad resul = this.fachada.crearHabilidad(option);
-        return resul;
+        HashMap<String,Integer> valores = resul.atacar();
+        this.personaje.actualizar(valores);
+        this.personaje.imprimirEstado();
     }
-    public Medicamento medicarse(String option){
+    public void medicarse(String option){
         Medicamento resul = this.fachada.crearMedicamento(option);
-        return resul;
+        HashMap<String,Integer> valores = resul.curar();
+        this.personaje.actualizar(valores);
+        this.personaje.imprimirEstado();
     }
   
     public static void main(String[] args){
-        Juego juego =new Juego();
-        PersonajeGame personaje = new PersonajeGame();
-        personaje.inicializar();
         Vista vista = new Vista();
         ControladorJuego c = new ControladorJuego(vista);
         
