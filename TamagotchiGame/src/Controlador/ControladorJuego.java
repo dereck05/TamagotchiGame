@@ -44,6 +44,7 @@ public class ControladorJuego implements ActionListener{
         this.juego = new Juego();
         this.fachada = new Facade();
         this.proxy = new Proxy();
+        proxy.setFilename("dia");
         this.personaje = new PersonajeGame();
         this.personaje.inicializar();
         this.personaje.imprimirEstado();
@@ -72,7 +73,6 @@ public class ControladorJuego implements ActionListener{
             case "Medicarse":
                 medicarse(this.vista.txtMedicina.getText());
                 break;
-     
             default:
                 JOptionPane.showMessageDialog(vista, "Opción no registrada");
                 break;
@@ -82,7 +82,7 @@ public class ControladorJuego implements ActionListener{
     public void comer(String option){
         IStrategy resul = this.fachada.crearEstrategia(option);
         
-        proxy.setActivity("Comer");
+        proxy.setActivity(resul.toString());
         proxy.guardar();
         //return resul;
     }
@@ -92,7 +92,7 @@ public class ControladorJuego implements ActionListener{
         this.personaje.actualizar(valores);
         this.personaje.imprimirEstado();
         
-        proxy.setActivity("Ejercitarse");
+        //proxy.setActivity(resul.);
         proxy.guardar();
     }
     public void enfermarse(String option){
@@ -101,7 +101,7 @@ public class ControladorJuego implements ActionListener{
         this.personaje.actualizar(valores);
         this.personaje.imprimirEstado();
         
-        proxy.setActivity("Enfermarse");
+        //proxy.setActivity(resul);
         proxy.guardar();
     }
     public void estrategia(String option){
@@ -110,7 +110,7 @@ public class ControladorJuego implements ActionListener{
         this.personaje.actualizar(valores);
         this.personaje.imprimirEstado();
         
-        proxy.setActivity("Estrategia");
+        proxy.setActivity(resul.toString());
         proxy.guardar();
     }
     public void habilidad(String option){
@@ -119,7 +119,7 @@ public class ControladorJuego implements ActionListener{
         this.personaje.actualizar(valores);
         this.personaje.imprimirEstado();
         
-        proxy.setActivity("Habilidad");
+        proxy.setActivity(resul.toString());
         proxy.guardar();
     }
     public void medicarse(String option){

@@ -1,0 +1,4 @@
+Comer: alegria: +15, energia: +15, grasa: +5, liquidos: +10, comida injerida: +10
+Ejercicios.Boxeo@38af70ce
+Ejercicios.Boxeo@6db46edd
+Ejercicios.Boxeo@38af70ce
