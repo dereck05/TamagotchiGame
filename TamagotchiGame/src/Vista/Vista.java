@@ -39,6 +39,9 @@ public class Vista extends javax.swing.JFrame {
         txtHabilidad = new javax.swing.JTextField();
         txtEstrategia = new javax.swing.JTextField();
         txtMedicina = new javax.swing.JTextField();
+        jlabelHora = new javax.swing.JLabel();
+        jlabelMinutos = new javax.swing.JLabel();
+        jlabelSegundos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +117,15 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        jlabelHora.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jlabelHora.setText("hora");
+
+        jlabelMinutos.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jlabelMinutos.setText("hora");
+
+        jlabelSegundos.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jlabelSegundos.setText("hora");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,7 +147,15 @@ public class Vista extends javax.swing.JFrame {
                     .addComponent(txtHabilidad)
                     .addComponent(txtEstrategia, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtMedicina))
-                .addContainerGap(367, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(421, Short.MAX_VALUE)
+                .addComponent(jlabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jlabelMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlabelSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +184,12 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMedicina)
                     .addComponent(txtMedicina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlabelHora, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlabelMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlabelSegundos, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         pack();
@@ -256,6 +281,9 @@ public class Vista extends javax.swing.JFrame {
     public javax.swing.JButton btnEstrategia;
     public javax.swing.JButton btnHabilidad;
     public javax.swing.JButton btnMedicina;
+    public javax.swing.JLabel jlabelHora;
+    public javax.swing.JLabel jlabelMinutos;
+    public javax.swing.JLabel jlabelSegundos;
     public javax.swing.JTextField txtComer;
     public javax.swing.JTextField txtEjercicio;
     public javax.swing.JTextField txtEnfermedad;
