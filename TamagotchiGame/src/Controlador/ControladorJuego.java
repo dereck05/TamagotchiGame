@@ -15,6 +15,7 @@ import Modelo.Facade;
 
 import Modelo.Juego;
 import Modelo.PersonajeGame;
+import Modelo.Proxy.Proxy;
 import Vista.Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +28,7 @@ import javax.swing.JOptionPane;
  */
 public class ControladorJuego implements ActionListener{
     private Vista vista;
-    
+    public Proxy proxy;
     public Facade fachada;
     public ControladorJuego(Vista v){
         this.vista = v;
@@ -37,6 +38,7 @@ public class ControladorJuego implements ActionListener{
         this.vista.btnHabilidad.addActionListener(this);
         this.vista.btnMedicina.addActionListener(this);
         this.fachada = new Facade();
+        this.proxy = new Proxy();
         this.vista.setVisible(true);
     }
     
@@ -72,28 +74,45 @@ public class ControladorJuego implements ActionListener{
     public IStrategy comer(String option){
         IStrategy resul = this.fachada.crearEstrategia(option);
         
+        proxy.setActivity("Comer");
+        proxy.guardar();
         return resul;
     }
     public Ejercicio ejercitarse(String option){
         Ejercicio resul = this.fachada.crearEjercicio(option);
         HashMap<String,Integer> valores = resul.ejercitarse();
         System.out.println(valores.get("Musculo"));
+
+        proxy.setActivity("Ejercitarse");
+        proxy.guardar();
         return resul;
     }
     public Enfermedad enfermarse(String option){
         Enfermedad resul = this.fachada.crearEnfermedad(option);
+        
+        proxy.setActivity("Enfermarse");
+        proxy.guardar();
         return resul;
     }
     public IStrategy estrategia(String option){
         IStrategy resul = this.fachada.crearEstrategia(option);
+        
+        proxy.setActivity("Estrategia");
+        proxy.guardar();
         return resul;
     }
     public Habilidad habilidad(String option){
         Habilidad resul = this.fachada.crearHabilidad(option);
+        
+        proxy.setActivity("Habilidad");
+        proxy.guardar();
         return resul;
     }
     public Medicamento medicarse(String option){
         Medicamento resul = this.fachada.crearMedicamento(option);
+        
+        proxy.setActivity("Medicarse");
+        proxy.guardar();
         return resul;
     }
   
