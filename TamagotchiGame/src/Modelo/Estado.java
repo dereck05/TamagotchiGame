@@ -25,12 +25,12 @@ public class Estado {
 
     public Estado() {
         this.Humor = Humor.FELIZ;
-        this.Alegria = 90;
-        this.Energia = 100;
-        this.SaludMental = 100;
-        this.SaludFisica = 100;
-        this.Comida =0;
-        this.Liquidos = 0;
+        this.Alegria = 50;
+        this.Energia = 50;
+        this.SaludMental = 50;
+        this.SaludFisica = 50;
+        this.Comida =50;
+        this.Liquidos = 50;
     }
 
     public Humor getHumor() {

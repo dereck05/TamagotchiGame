@@ -27,12 +27,12 @@ public class Apariencia {
     }
 
     public Apariencia() {
-        this.Musculo = 10;
-        this.Grasa = 10;
-        this.Fuerza = 10;
-        this.Estatura = 10;
-        this.Rapidez = 10;
-        this.Esfuerzo = 10;
+        this.Musculo = 50;
+        this.Grasa = 50;
+        this.Fuerza = 50;
+        this.Estatura = 50;
+        this.Rapidez = 50;
+        this.Esfuerzo = 50;
     }
 
     public int getMusculo() {
