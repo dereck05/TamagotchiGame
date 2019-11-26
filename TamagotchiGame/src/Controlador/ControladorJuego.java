@@ -56,13 +56,13 @@ public class ControladorJuego implements ActionListener{
     private ArrayList<Habilidad> habilidades;
     
     private boolean estado;
-    Thread hiloAlimentos;
-    Thread hiloMedicamentos;
-    Thread hiloTiempo;
-    Thread hiloVerEnfermedad;
-    Thread hiloEnfermar;
-    Thread hiloSocializar;
-    Thread hiloPelear;
+    private Thread hiloAlimentos;
+    private Thread hiloMedicamentos;
+    private Thread hiloTiempo;
+    private Thread hiloVerEnfermedad;
+    private Thread hiloEnfermar;
+    private Thread hiloSocializar;
+    private Thread hiloPelear;
     private boolean socializar;
     private boolean pelear;
     private String horas,minutos,segundos;
@@ -551,6 +551,14 @@ public class ControladorJuego implements ActionListener{
         } catch(Exception e){
             
         }
+    }
+
+    public PersonajeGame getPersonaje() {
+        return personaje;
+    }
+
+    public void setPersonaje(PersonajeGame personaje) {
+        this.personaje = personaje;
     }
     
     public void iniciarEnfermar(Enfermedad e) throws InterruptedException{
