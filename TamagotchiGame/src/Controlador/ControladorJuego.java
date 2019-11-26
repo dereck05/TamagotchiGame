@@ -42,6 +42,9 @@ public class ControladorJuego implements ActionListener,Runnable{
     private Juego juego;
     public Facade fachada;
     private ArrayList<Enfermedad> enfermedades;
+    private ArrayList<Medicamento> medicamentos;
+    private ArrayList<Ejercicio> ejercicios;
+    private ArrayList<Alimento> alimentos;
     
     private boolean estado;
     Thread hilo;
@@ -84,8 +87,8 @@ public class ControladorJuego implements ActionListener,Runnable{
     public void actionPerformed(ActionEvent e) {
         switch(e.getActionCommand()){
             case "Comer":
-                
-                comer(this.vista.txtComer.getText(),"",0);
+                //el get 0 se tiene que cambiar por el alimento seleccionado
+                comer(this.vista.txtComer.getText(), alimentos.get(0));
                 break;
             case "Ejercitarse":
                 ejercitarse(this.vista.txtEjercicio.getText());
@@ -108,8 +111,8 @@ public class ControladorJuego implements ActionListener,Runnable{
         }
     }
     
-    public void comer(String option,String nombreAlimento, int porcentajeEnergia){
-        IStrategy resul = this.fachada.crearComer(option,nombreAlimento, porcentajeEnergia);
+    public void comer(String option,Alimento a){
+        IStrategy resul = this.fachada.crearComer(option,a);
         HashMap<String,Integer> valores = resul.ejecutar();
         this.personaje.actualizar(valores);
         proxy.setActivity(resul.toString());
@@ -215,7 +218,77 @@ public class ControladorJuego implements ActionListener,Runnable{
         resul = this.fachada.crearEnfermedad("Vomito");
         this.enfermedades.add(resul);
     }
-       
+    public void addMedicamentos(){
+        Medicamento resul;
+        resul = this.fachada.crearMedicamento("Ibuprofeno");
+        this.medicamentos.add(resul);
+        resul=this.fachada.crearMedicamento("Lexapro");
+        this.medicamentos.add(resul);
+        resul= this.fachada.crearMedicamento("Loperamida");
+        this.medicamentos.add(resul);
+        resul=this.fachada.crearMedicamento("Mucosan");
+        this.medicamentos.add(resul);
+        resul=this.fachada.crearMedicamento("Panadol");
+        this.medicamentos.add(resul);
+        resul=this.fachada.crearMedicamento("PeptoBismol");
+        this.medicamentos.add(resul);
+    }
+    public void addEjercicios(){
+        Ejercicio resul;
+        resul = this.fachada.crearEjercicio("Atletismo");
+        this.ejercicios.add(resul);
+        resul=this.fachada.crearEjercicio("Boxeo");
+        this.ejercicios.add(resul);
+        resul=this.fachada.crearEjercicio("Ciclismo");
+        this.ejercicios.add(resul);
+        resul=this.fachada.crearEjercicio("Danza");
+        this.ejercicios.add(resul);
+        resul=this.fachada.crearEjercicio("Futbol");
+        this.ejercicios.add(resul);
+        resul=this.fachada.crearEjercicio("Gimnasia");
+        this.ejercicios.add(resul);
+        resul=this.fachada.crearEjercicio("Judo");
+        this.ejercicios.add(resul);
+        resul=this.fachada.crearEjercicio("Karate");
+        this.ejercicios.add(resul);
+        resul=this.fachada.crearEjercicio("Natacion");
+        this.ejercicios.add(resul);
+        resul=this.fachada.crearEjercicio("Yoga");
+        this.ejercicios.add(resul);
+    }
+    public void addAlimentos(){
+        Alimento resul;
+        resul=this.fachada.crearAlimento("Pan", 15);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Cafe", 20);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Arroz", 25);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Frijoles", 15);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Atún", 10);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Pollo", 15);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Res", 20);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Cerdo",18);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Jugo de naranja", 19);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Fideos", 16);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Maiz dulce", 8);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Coca cola", 15);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Galletas", 14);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Cereal", 20);
+        this.alimentos.add(resul);
+        resul=this.fachada.crearAlimento("Agua", 15);
+        this.alimentos.add(resul);
+    }   
     public void run(){
         while(estado == true){
             Calendar fecha = new GregorianCalendar();

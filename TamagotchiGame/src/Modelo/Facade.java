@@ -22,8 +22,11 @@ public class Facade {
     public Facade(){
         this.factory = new SuperFactory();
     }
-    public IStrategy crearComer(String option, String nombreAlimento , int  porcentajeEnergia){
-        Alimento alimento = this.factory.crearAlimento(nombreAlimento, porcentajeEnergia);
+    public Alimento crearAlimento(String nombreAlimento , int  porcentajeEnergia){
+       return this.factory.crearAlimento(nombreAlimento, porcentajeEnergia);
+    }
+    public IStrategy crearComer(String option, Alimento alimento){
+        
         IStrategy resul = this.factory.crearEstrategia(option,alimento);
         return resul;
     }
@@ -46,10 +49,7 @@ public class Facade {
         return resul;
     }
     
-    public Alimento crearAlimento(String option, int porcentajeEnergia){
-        Alimento resul = this.factory.crearAlimento(option, porcentajeEnergia);
-        return resul;
-    }
+
     
     public Medicamento crearMedicamento(String option){
         Medicamento resul = this.factory.crearMedicamento(option);
