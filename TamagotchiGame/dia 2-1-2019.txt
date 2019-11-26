@@ -1,0 +1,1 @@
+Enfermarse: Depresion: comportamientos: salud mental: -20, energia: -15, alegria: -10, porcentajes aparicion: salud mental: 5, alegria: 5, energia: 2, curas: yoga, loperamida
