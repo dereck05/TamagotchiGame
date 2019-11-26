@@ -34,7 +34,7 @@ public class PersonajeGame extends Personaje  {
         this.tipo = tipo;
         this.enfermedadActual = enfermedad;
     }
-    public PersonajeGame(){}
+
     
     public void inicializar(){
         this.edad = 0;
