@@ -21,6 +21,8 @@ public class PersonajeGame extends Personaje  {
     private Apariencia apariencia;
     private String tipo;
     private String enfermedadActual;
+    private Personaje amigoActual;
+    private PersonajeGame enemigoActual;
 
     
 
@@ -34,7 +36,9 @@ public class PersonajeGame extends Personaje  {
         this.tipo = tipo;
         this.enfermedadActual = enfermedad;
     }
-    public PersonajeGame(){}
+    public PersonajeGame(){
+        
+    }
     
     public void inicializar(){
         this.edad = 0;
@@ -177,6 +181,22 @@ public class PersonajeGame extends Personaje  {
 
     public void setEnfermedadActual(String enfermedadActual) {
         this.enfermedadActual = enfermedadActual;
+    }
+
+    public Personaje getAmigoActual() {
+        return amigoActual;
+    }
+
+    public void setAmigoActual(Personaje amigoActual) {
+        this.amigoActual = amigoActual;
+    }
+
+    public PersonajeGame getEnemigoActual() {
+        return enemigoActual;
+    }
+
+    public void setEnemigoActual(PersonajeGame enemigoActual) {
+        this.enemigoActual = enemigoActual;
     }
     
 }
