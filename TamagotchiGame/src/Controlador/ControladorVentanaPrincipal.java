@@ -97,24 +97,28 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
         vp.lblCuarto.addMouseListener(new MouseAdapter(){  
         public void mouseClicked(MouseEvent e){  
            vp.goTo("Cuarto");
+           dormir();
         }  
         }); 
         
         vp.lblBano.addMouseListener(new MouseAdapter(){  
         public void mouseClicked(MouseEvent e){  
            vp.goTo("Baño");
+           usarBaño();
         }  
         }); 
         
         vp.lblBodega.addMouseListener(new MouseAdapter(){  
         public void mouseClicked(MouseEvent e){  
            vp.goTo("Bodega");
+           bodega();
         }  
         });
         
         vp.lblGimnasio.addMouseListener(new MouseAdapter(){  
         public void mouseClicked(MouseEvent e){  
            vp.goTo("Gimnasio");
+           ejercitarse();
         }  
         }); 
         
