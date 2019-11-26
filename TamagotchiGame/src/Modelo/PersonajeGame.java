@@ -26,15 +26,11 @@ public class PersonajeGame extends Personaje  {
 
     
 
-    public PersonajeGame(String nombre, String imagen,int edad, ArrayList<IStrategy> comportamientos, ArrayList<Habilidad> ataques, Estado estado, Apariencia apariencia, String tipo, String enfermedad) {
+    public PersonajeGame(String nombre, String imagen, ArrayList<Habilidad> ataques, Estado estado, Apariencia apariencia) {
         super(nombre,imagen);
-        this.edad = edad;
-        this.comportamientos = comportamientos;
         this.ataques = ataques;
         this.estado = estado;
         this.apariencia = apariencia;
-        this.tipo = tipo;
-        this.enfermedadActual = enfermedad;
     }
     public PersonajeGame(){
         

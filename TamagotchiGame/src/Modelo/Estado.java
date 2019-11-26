@@ -25,8 +25,8 @@ public class Estado {
 
     public Estado() {
         this.Humor = Humor.FELIZ;
-        this.Alegria = 50;
-        this.Energia = 50;
+        this.Alegria = 100;
+        this.Energia = 100;
         this.SaludMental = 50;
         this.SaludFisica = 50;
         this.Comida =50;
