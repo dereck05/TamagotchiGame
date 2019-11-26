@@ -86,8 +86,8 @@ public class PersonajeGame extends Personaje  {
             int num = val.get("Salud mental");
             this.estado.setSaludMental(this.estado.getSaludMental()+num > 100 ? 100:(this.estado.getSaludMental()+num < 0 ? 0 : this.estado.getSaludMental()+num));
         }
-        if(val.containsKey("comida injerida")){
-            int num = val.get("comida injerida");
+        if(val.containsKey("Comida injerida")){
+            int num = val.get("Comida injerida");
             this.estado.setComidaIngerida(this.estado.getComidaIngerida()+num > 100 ? 100:(this.estado.getComidaIngerida()+num < 0 ? 0 : this.estado.getComidaIngerida()+num));
         }
         if(val.containsKey("Liquidos")){
