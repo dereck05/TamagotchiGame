@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -39,6 +40,7 @@ public class ControladorJuego implements ActionListener,Runnable{
     private PersonajeGame personaje;
     private Juego juego;
     public Facade fachada;
+    private ArrayList<Enfermedad> enfermedades;
     
     private boolean estado;
     Thread hilo;
@@ -61,6 +63,7 @@ public class ControladorJuego implements ActionListener,Runnable{
         this.personaje = new PersonajeGame();
         this.personaje.inicializar();
         this.personaje.imprimirEstado();
+        this.addEnfermedades();
         this.vista.setVisible(true);
         this.h = 0;
         this.m = 0;
@@ -193,6 +196,21 @@ public class ControladorJuego implements ActionListener,Runnable{
         } catch(Exception e){
             
         }
+    }
+    public void addEnfermedades(){
+        Enfermedad resul ;
+        resul = this.fachada.crearEnfermedad("Depresion");
+        this.enfermedades.add(resul);
+        resul = this.fachada.crearEnfermedad("Diarrea");
+        this.enfermedades.add(resul);
+        resul = this.fachada.crearEnfermedad("Fiebre");
+        this.enfermedades.add(resul);
+        resul = this.fachada.crearEnfermedad("Gripe");
+        this.enfermedades.add(resul);
+        resul = this.fachada.crearEnfermedad("Obesidad");
+        this.enfermedades.add(resul);
+        resul = this.fachada.crearEnfermedad("Vomito");
+        this.enfermedades.add(resul);
     }
        
     public void run(){
