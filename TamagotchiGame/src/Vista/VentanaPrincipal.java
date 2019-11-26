@@ -32,7 +32,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public MovingBall ball;
 
     public void drawFrame(Graphics g){
-        ball.travel(3.0);
+        ball.travel(4.0);
         ball.draw(g);
     }
     
@@ -531,12 +531,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         houseClickCounter++;
         
         Graphics g = panelImagen.getGraphics();
-        for(int i = 0; i < 15; i++){
+        for(int i = 0; i < 30; i++){
             
             ball.headTowards(evt.getX(), evt.getY());
             drawFrame(g);
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.MILLISECONDS.sleep(300);
             } catch (InterruptedException ex) {
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -547,7 +547,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
         ball.draw(panelImagen.getGraphics());
-        
+        repaint();
     }//GEN-LAST:event_lblImagenMouseClicked
 
     private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
