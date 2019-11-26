@@ -55,6 +55,8 @@ public class MovingBall  {
       dy = Math.sin(angle) * speed;
    }
    
+   
+   
 
    /**
     * Draw the ball in the graphics context g.  Note: The drawing color

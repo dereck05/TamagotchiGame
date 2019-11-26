@@ -19,41 +19,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
-    Thread th;
-    boolean flag = true;
+   
     public VentanaPrincipal() {
         initComponents();
+        
         ball = new MovingBall(0, panelImagen.getWidth(), 0, panelImagen.getHeight());
-        ball.setLocation(50, 50);
+        ball.setLocation(50, 200);
         Graphics g = panelImagen.getGraphics();
         ball.draw(g);
-        th = new Thread(){
-            @Override
-            public void run(){
-                while(true){
-                    houseClickCounter++;
-                    Graphics g = panelImagen.getGraphics();
-        //                for(int i = 0; i < 30; i++){
-
-                        //ball.headTowards(evt.getX(), evt.getY());
-                    ball.draw(g);
-        //                    try {
-        //                        TimeUnit.MILLISECONDS.sleep(300);
-        //                    } catch (InterruptedException ex) {
-        //                        Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        //                    }
-                    repaint();
-
-                }
-                
-//                }
-                
-                
-            }
-                   
         
-        };
-        th.start();
+        
     }
 
     public int roomClickCounter = 0;
@@ -63,6 +38,49 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void drawFrame(Graphics g){
         ball.travel(4.0);
         ball.draw(g);
+    }
+    
+    public void goTo(String lugar){
+        int x = 0;
+        int y = 0;
+        
+        //Setea las coordenadas al lugar que se quiere ir
+        switch(lugar){
+            case "Cuarto":
+                x = 100;
+                y = 110;
+              break;
+            case "Baño":
+                x = 300;
+                y = 50;
+                break;
+            case "Bodega":
+                x = 600;
+                y = 110;
+                break;
+            case "Gimnasio":
+                x = 780;
+                y = 190;
+                break;
+            case "Piscina":
+                x = 900;
+                y = 190;
+                break;
+            default:
+                break;
+        }
+        
+        for(int i = 0; i < 30; i++){
+
+            ball.headTowards(x, y);
+            try {
+                TimeUnit.MILLISECONDS.sleep(30);
+                
+            } catch (InterruptedException ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ball.travel(3.0);
+        }
     }
     
     /**
@@ -560,12 +578,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             ball.headTowards(evt.getX(), evt.getY());
             try {
-                TimeUnit.MILLISECONDS.sleep(300);
+                TimeUnit.MILLISECONDS.sleep(30);
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            ball.travel(4.0);
+            ball.travel(3.0);
         }
     }//GEN-LAST:event_lblImagenMouseClicked
 
