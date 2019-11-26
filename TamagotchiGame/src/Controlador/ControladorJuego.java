@@ -14,6 +14,9 @@ import Habilidades.Habilidad;
 import Medicamentos.Medicamento;
 import Model.Ataque;
 import Model.Personaje;
+import Modelo.Apariencia;
+import Modelo.Estado;
+import Modelo.Estado.Humor;
 import Modelo.Facade;
 
 import Modelo.Juego;
@@ -51,6 +54,7 @@ public class ControladorJuego implements ActionListener{
     private ArrayList<Alimento> alimentos;
     private ArrayList<Personaje> amigos;
     private ArrayList<PersonajeGame> enemigos;
+    private ArrayList<Habilidad> habilidades;
     
     private boolean estado;
     Thread hiloAlimentos;
@@ -59,7 +63,9 @@ public class ControladorJuego implements ActionListener{
     Thread hiloVerEnfermedad;
     Thread hiloEnfermar;
     Thread hiloSocializar;
+    Thread hiloPelear;
     private boolean socializar;
+    private boolean pelear;
     private String horas,minutos,segundos;
     private int h,m,s;
     private String day,month,year;
@@ -75,6 +81,7 @@ public class ControladorJuego implements ActionListener{
         this.medicamentos=new ArrayList<>();
         this.amigos=new ArrayList<>();
         this.enemigos= new ArrayList<>();
+        this.habilidades= new ArrayList<>();
         this.vista.btnComer.addActionListener(this);
         this.vista.btnEjercicio.addActionListener(this);
         this.vista.btnEnfermar.addActionListener(this);
@@ -91,8 +98,12 @@ public class ControladorJuego implements ActionListener{
         this.addEjercicios();
         this.addMedicamentos();
         this.addAmigos();
+        this.addHabilidad();
+        this.addEnemigos();
+       
         this.vista.setVisible(true);
         this.socializar=false;
+        this.pelear=false;
         this.h = 0;
         this.m = 0;
         this.s = 0;
@@ -108,6 +119,7 @@ public class ControladorJuego implements ActionListener{
         generarAlimentos();
         socializar();
         iniciarVerEnfermedad();
+        pelearH();
         iniciarEnfermar();
         
     }
@@ -140,7 +152,16 @@ public class ControladorJuego implements ActionListener{
                 break;
         }
     }
-    
+    public ArrayList<Habilidad> escogerHabilidades(){
+        return null;
+    }
+    public void pelear(){
+        ArrayList<Habilidad> habilidadesEscogidas = escogerHabilidades();
+        for(int i=0; i<habilidadesEscogidas.size();i++){
+            this.personaje.getEnemigoActual().actualizar(habilidadesEscogidas.get(i).atacar());
+            this.personaje.actualizar(this.personaje.getEnemigoActual().getAtaque().get(i).atacar());
+        }
+    }
     public void comer(String option,Alimento a){
         IStrategy resul = this.fachada.crearComer(option,a);
         HashMap<String,Integer> valores = resul.ejecutar();
@@ -153,8 +174,8 @@ public class ControladorJuego implements ActionListener{
         Ejercicio resul = this.fachada.crearEjercicio(option);
         HashMap<String,Integer> valores = resul.ejercitarse();
         this.personaje.actualizar(valores);
+        this.personaje.addHabilidad(resul.obtenerHabilidadGenerada());
         this.personaje.imprimirEstado();
-        
         proxy.setActivity(resul.toStringEjercitarse());
         proxy.guardar();
     }
@@ -238,6 +259,35 @@ public class ControladorJuego implements ActionListener{
         };
         hiloMedicamentos.start();
     }
+    public void pelearH(){
+        hiloPelear = new Thread(){
+            @Override
+            public void run(){
+
+                while(estado==true){
+                    try {
+                        sleep(25000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    if(!pelear){
+                        int input = JOptionPane.showConfirmDialog(null, "¿Desea aceptar la pelea?");
+                        // 0=yes, 1=no, 2=cancel
+                        if(input==0){
+                            int i= (int)Math.floor(Math.random()*enemigos.size());
+                            personaje.setEnemigoActual(enemigos.get(i));
+                            pelear();
+                            pelear=true;
+
+                        }
+                        
+                    }
+
+                }
+            }
+        };
+        hiloPelear.start();
+    }
     public void socializar(){
         hiloSocializar = new Thread(){
             @Override
@@ -252,7 +302,7 @@ public class ControladorJuego implements ActionListener{
                         int input = JOptionPane.showConfirmDialog(null, "¿Desea socilizar?");
                         // 0=yes, 1=no, 2=cancel
                         if(input==0){
-                            int i= (int)Math.floor(Math.random()*amigos.size()+1);
+                            int i= (int)Math.floor(Math.random()*amigos.size());
                             personaje.setAmigoActual(amigos.get(i));
                             estrategia("Socializar");
                             socializar=true;
@@ -523,6 +573,85 @@ public class ControladorJuego implements ActionListener{
         this.amigos.add(resul);
         
         
+    }
+    public void addEnemigos(){
+        ArrayList<Habilidad> habilidadesEnemigo;
+        Apariencia apariencia;
+        Estado estado1;
+        PersonajeGame personajeGame;
+        apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        habilidadesEnemigo = generarHabilidades();
+        personajeGame = new PersonajeGame("Juanito8","",habilidadesEnemigo,estado1,apariencia);
+        this.enemigos.add(personajeGame);
+        apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        habilidadesEnemigo = generarHabilidades();
+        personajeGame = new PersonajeGame("Juanito7","",habilidadesEnemigo,estado1,apariencia);
+        this.enemigos.add(personajeGame);
+        apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        habilidadesEnemigo = generarHabilidades();
+        personajeGame = new PersonajeGame("Juanito6","",habilidadesEnemigo,estado1,apariencia);
+        this.enemigos.add(personajeGame);
+        apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        habilidadesEnemigo = generarHabilidades();
+        personajeGame = new PersonajeGame("Juanito5","",habilidadesEnemigo,estado1,apariencia);
+        this.enemigos.add(personajeGame);
+        apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        habilidadesEnemigo = generarHabilidades();
+        personajeGame = new PersonajeGame("Juanito4","",habilidadesEnemigo,estado1,apariencia);
+        this.enemigos.add(personajeGame);
+        apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        habilidadesEnemigo = generarHabilidades();
+        personajeGame = new PersonajeGame("Juanito3","",habilidadesEnemigo,estado1,apariencia);
+        this.enemigos.add(personajeGame);
+        apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        habilidadesEnemigo = generarHabilidades();
+        personajeGame = new PersonajeGame("Juanito2","",habilidadesEnemigo,estado1,apariencia);
+        this.enemigos.add(personajeGame);
+        apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        habilidadesEnemigo = generarHabilidades();
+        personajeGame = new PersonajeGame("Juanito1","",habilidadesEnemigo,estado1,apariencia);
+        this.enemigos.add(personajeGame);
+    }
+    public ArrayList<Habilidad> generarHabilidades(){
+        ArrayList<Habilidad> habilidadesEnemigo = new ArrayList<>();
+        int numHabilidades= (int)Math.floor(Math.random()*personaje.getAtaque().size()+1);
+        int hab;
+        for (int i=0; i<numHabilidades;i++){
+            hab = (int)Math.floor(Math.random()*habilidades.size());
+            habilidadesEnemigo.add(habilidades.get(hab));
+        }
+        return habilidadesEnemigo;
+    }
+    public void addHabilidad(){
+        Habilidad resul;
+        resul = this.fachada.crearHabilidad("AlaDeAcero");
+        this.habilidades.add(resul);
+        resul = this.fachada.crearHabilidad("Electrocañon");
+        this.habilidades.add(resul);
+        resul = this.fachada.crearHabilidad("Golpe");
+        this.habilidades.add(resul);
+        resul = this.fachada.crearHabilidad("Llave");
+        this.habilidades.add(resul);
+        resul = this.fachada.crearHabilidad("Martillazo");
+        this.habilidades.add(resul);
+        resul = this.fachada.crearHabilidad("OjoLaser");
+        this.habilidades.add(resul);
+        resul = this.fachada.crearHabilidad("Patada");
+        this.habilidades.add(resul);
+        resul = this.fachada.crearHabilidad("SuperVelocidad");
+        this.habilidades.add(resul);
+        resul = this.fachada.crearHabilidad("Trueno");
+        this.habilidades.add(resul);
+        resul = this.fachada.crearHabilidad("Zumbidos");
+        this.habilidades.add(resul);
     }
     public void addMedicamentos(){
         Medicamento resul;
