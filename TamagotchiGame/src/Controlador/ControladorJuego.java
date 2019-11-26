@@ -59,7 +59,7 @@ public class ControladorJuego implements ActionListener,Runnable{
         this.juego = new Juego();
         this.fachada = new Facade();
         this.proxy = new Proxy();
-     //   this.personaje = new PersonajeGame();
+        this.personaje = new PersonajeGame();
         this.personaje.inicializar();
         this.personaje.imprimirEstado();
         this.vista.setVisible(true);
