@@ -18,6 +18,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
     }
 
+    public int roomClickCounter = 0;
+    public int houseClickCounter = 0;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,31 +30,480 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelImagen = new javax.swing.JPanel();
+        lblCuarto = new javax.swing.JLabel();
+        lblBano = new javax.swing.JLabel();
+        lblBodega = new javax.swing.JLabel();
+        lblGimnasio = new javax.swing.JLabel();
+        lblPiscina = new javax.swing.JLabel();
+        lblFutbol = new javax.swing.JLabel();
+        lblPeleas = new javax.swing.JLabel();
+        lblComedor = new javax.swing.JLabel();
+        lblHuerto = new javax.swing.JLabel();
+        lblImagen = new javax.swing.JLabel();
+        lblPersonaje = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        lblHumor = new javax.swing.JLabel();
+        lblAlegria = new javax.swing.JLabel();
+        lblEnergia = new javax.swing.JLabel();
+        lblSaludMental = new javax.swing.JLabel();
+        lblSaludFisica = new javax.swing.JLabel();
+        lblComida = new javax.swing.JLabel();
+        lblLiquidos = new javax.swing.JLabel();
+        lblMusculo = new javax.swing.JLabel();
+        lblFuerza = new javax.swing.JLabel();
+        lblRapidez = new javax.swing.JLabel();
+        lblGrasa = new javax.swing.JLabel();
+        lblEstatura = new javax.swing.JLabel();
+        lblEsfuerzo = new javax.swing.JLabel();
+        lblAuxiliar = new javax.swing.JLabel();
+        lblPersonaje1 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        lblHoras = new javax.swing.JLabel();
+        lblMinutos = new javax.swing.JLabel();
+        lblSegundos = new javax.swing.JLabel();
+        btnOpciones = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        lblDia = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        lblEdad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/plano_4.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelImagen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelImagenMouseClicked(evt);
+            }
+        });
+        panelImagen.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblCuarto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCuartoMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblCuarto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 240, 150));
+
+        lblBano.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBanoMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblBano, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 4, 220, 90));
+
+        lblBodega.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBodegaMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblBodega, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 4, 240, 150));
+
+        lblGimnasio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGimnasioMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblGimnasio, new org.netbeans.lib.awtextra.AbsoluteConstraints(714, 4, 140, 210));
+
+        lblPiscina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPiscinaMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblPiscina, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 4, 140, 210));
+
+        lblFutbol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblFutbolMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblFutbol, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 334, 130, 210));
+
+        lblPeleas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPeleasMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblPeleas, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 334, 130, 210));
+
+        lblComedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblComedorMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblComedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 294, 130, 250));
+
+        lblHuerto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHuertoMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblHuerto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 294, 160, 120));
+
+        lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/plano_4.png"))); // NOI18N
+        lblImagen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblImagenMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        lblPersonaje.setText("Imagen personaje");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setText("Estado");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel2.setText("Apariencia");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Humor:");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Alegría");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Energía");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Salud mental");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Salud física");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Comida");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("Líquidos");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("Músculo");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("Grasa");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setText("Fuerza");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel13.setText("Estatura");
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setText("Rapidez");
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel15.setText("Esfuerzo");
+
+        lblHumor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblHumor.setText("Neutro");
+
+        lblAlegria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblAlegria.setText("0");
+
+        lblEnergia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblEnergia.setText("0");
+
+        lblSaludMental.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSaludMental.setText("0");
+
+        lblSaludFisica.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSaludFisica.setText("0");
+
+        lblComida.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblComida.setText("0");
+
+        lblLiquidos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblLiquidos.setText("0");
+
+        lblMusculo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblMusculo.setText("0");
+
+        lblFuerza.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblFuerza.setText("0");
+
+        lblRapidez.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblRapidez.setText("0");
+
+        lblGrasa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblGrasa.setText("0");
+
+        lblEstatura.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblEstatura.setText("0");
+
+        lblEsfuerzo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblEsfuerzo.setText("0");
+
+        lblAuxiliar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblAuxiliar.setText("ZZZZZZZ");
+
+        lblPersonaje1.setText("Imagen amigo/enemigo");
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setText("Tiempo de juego:");
+
+        lblHoras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblHoras.setText("00");
+
+        lblMinutos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblMinutos.setText("00");
+
+        lblSegundos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSegundos.setText("00");
+
+        btnOpciones.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnOpciones.setText("Opciones");
+        btnOpciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpcionesActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel20.setText("Día:");
+
+        lblDia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDia.setText("00");
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel17.setText("Edad:");
+
+        lblEdad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblEdad.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1003, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 164, Short.MAX_VALUE))
+                .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblHumor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblPersonaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblPersonaje1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblAuxiliar)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel16)
+                                .addComponent(jLabel20))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblDia)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblHoras)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(lblMinutos)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(lblSegundos))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel17)
+                            .addGap(31, 31, 31)
+                            .addComponent(lblEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(38, 38, 38)
+                                .addComponent(lblAlegria, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblEnergia, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSaludMental, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSaludFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLiquidos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblComida, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblGrasa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMusculo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel15))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblFuerza, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel14)))
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRapidez, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEsfuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(0, 118, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel12)
+                            .addComponent(lblMusculo)
+                            .addComponent(jLabel4)
+                            .addComponent(lblAlegria)
+                            .addComponent(jLabel6)
+                            .addComponent(lblSaludMental)
+                            .addComponent(jLabel8)
+                            .addComponent(lblComida)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAuxiliar)
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(lblHumor))
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(lblEdad))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPersonaje1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(lblHoras)
+                            .addComponent(lblMinutos)
+                            .addComponent(lblSegundos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(lblDia))
+                        .addGap(22, 22, 22)
+                        .addComponent(btnOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(lblFuerza)
+                            .addComponent(lblRapidez))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel11)
+                    .addComponent(lblGrasa)
+                    .addComponent(lblEstatura)
+                    .addComponent(lblEsfuerzo)
+                    .addComponent(jLabel5)
+                    .addComponent(lblEnergia)
+                    .addComponent(jLabel7)
+                    .addComponent(lblSaludFisica)
+                    .addComponent(jLabel9)
+                    .addComponent(lblLiquidos))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void panelImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelImagenMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelImagenMouseClicked
+
+    private void lblCuartoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCuartoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblCuartoMouseClicked
+
+    private void lblBanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblBanoMouseClicked
+
+    private void lblBodegaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBodegaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblBodegaMouseClicked
+
+    private void lblGimnasioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGimnasioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblGimnasioMouseClicked
+
+    private void lblHuertoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHuertoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblHuertoMouseClicked
+
+    private void lblComedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblComedorMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblComedorMouseClicked
+
+    private void lblPeleasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPeleasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblPeleasMouseClicked
+
+    private void lblFutbolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFutbolMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblFutbolMouseClicked
+
+    private void lblPiscinaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPiscinaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblPiscinaMouseClicked
+
+    private void lblImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenMouseClicked
+        // TODO add your handling code here:
+        houseClickCounter++;
+    }//GEN-LAST:event_lblImagenMouseClicked
+
+    private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOpcionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -60,7 +512,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -89,6 +541,56 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnOpciones;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    public javax.swing.JLabel lblAlegria;
+    public javax.swing.JLabel lblAuxiliar;
+    public javax.swing.JLabel lblBano;
+    public javax.swing.JLabel lblBodega;
+    public javax.swing.JLabel lblComedor;
+    public javax.swing.JLabel lblComida;
+    public javax.swing.JLabel lblCuarto;
+    public javax.swing.JLabel lblDia;
+    public javax.swing.JLabel lblEdad;
+    public javax.swing.JLabel lblEnergia;
+    public javax.swing.JLabel lblEsfuerzo;
+    public javax.swing.JLabel lblEstatura;
+    public javax.swing.JLabel lblFuerza;
+    public javax.swing.JLabel lblFutbol;
+    public javax.swing.JLabel lblGimnasio;
+    public javax.swing.JLabel lblGrasa;
+    public javax.swing.JLabel lblHoras;
+    public javax.swing.JLabel lblHuerto;
+    public javax.swing.JLabel lblHumor;
+    public javax.swing.JLabel lblImagen;
+    public javax.swing.JLabel lblLiquidos;
+    public javax.swing.JLabel lblMinutos;
+    public javax.swing.JLabel lblMusculo;
+    public javax.swing.JLabel lblPeleas;
+    private javax.swing.JLabel lblPersonaje;
+    private javax.swing.JLabel lblPersonaje1;
+    public javax.swing.JLabel lblPiscina;
+    public javax.swing.JLabel lblRapidez;
+    public javax.swing.JLabel lblSaludFisica;
+    public javax.swing.JLabel lblSaludMental;
+    public javax.swing.JLabel lblSegundos;
+    public javax.swing.JPanel panelImagen;
     // End of variables declaration//GEN-END:variables
 }
