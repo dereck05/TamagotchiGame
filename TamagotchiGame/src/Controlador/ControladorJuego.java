@@ -217,7 +217,7 @@ public class ControladorJuego implements ActionListener{
                     juego.getHuerto().añadirMedicamento(medicamentos.get(i));
                     JOptionPane.showMessageDialog(vista, juego.getHuerto().getMedicamentos().get(medicamentos.get(i)));
                     try{
-                        sleep(30000);
+                        sleep(31000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
                     }

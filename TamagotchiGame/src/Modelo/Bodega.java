@@ -43,9 +43,10 @@ public class Bodega {
     }
 
     public HashMap<Medicamento, Integer> getMedicamentos() {
+        
         return medicamentos;
     }
-
+   
     public void setMedicamentos(HashMap<Medicamento, Integer> medicamentos) {
         this.medicamentos = medicamentos;
     }
