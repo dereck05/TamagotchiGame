@@ -45,7 +45,6 @@ public class ControladorJuego implements ActionListener{
     private ArrayList<Medicamento> medicamentos;
     private ArrayList<Ejercicio> ejercicios;
     private ArrayList<Alimento> alimentos;
-    
     private boolean estado;
     Thread hiloAlimentos;
     Thread hiloTiempo;
@@ -255,6 +254,134 @@ public class ControladorJuego implements ActionListener{
         hiloVerEnfermedad = new Thread(){
             @Override
             public void run(){
+                while(true){
+                    for(Enfermedad e : enfermedades){
+                        HashMap<String,Integer> val = e.generarPorcentajeAparacion();
+                        if(val.containsKey("Musculo")){
+                            int num = val.get("Musculo");
+//                            System.out.println("NUM1: "+num);
+//                            System.out.println("NUM2: "+personaje.getApariencia().getMusculo());
+                            if(personaje.getApariencia().getMusculo()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+
+                        }
+                        if(val.containsKey("Grasa")){
+                            int num = val.get("Grasa");
+                            if(personaje.getApariencia().getGrasa()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                        if(val.containsKey("Fuerza")){
+                            int num = val.get("Fuerza");
+                            if(personaje.getApariencia().getFuerza()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                        if(val.containsKey("Estatura")){
+                            int num = val.get("Estatura");
+                            if(personaje.getApariencia().getEstatura()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                        if(val.containsKey("Rapidez")){
+                            int num = val.get("Rapidez");
+                            if(personaje.getApariencia().getRapidez()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                        if(val.containsKey("Esfuerzo")){
+                            int num = val.get("Esfuerzo");
+                            if(personaje.getApariencia().getEsfuerzo()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                        if(val.containsKey("Energia")){
+                            int num = val.get("Energia");
+                            if(personaje.getEstado().getEnergia()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                        if(val.containsKey("Salud fisica")){
+                            int num = val.get("Salud fisica");
+                            if(personaje.getEstado().getSaludFisica()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                        if(val.containsKey("Salud mental")){
+                            int num = val.get("Salud mental");
+                            if(personaje.getEstado().getSaludMental()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                        if(val.containsKey("comida injerida")){
+                            int num = val.get("comida injerida");
+                            if(personaje.getEstado().getComidaIngerida()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                        if(val.containsKey("Liquidos")){
+                            int num = val.get("Liquidos");
+                            if(personaje.getEstado().getLiquidos()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                        if(val.containsKey("Alegria")){
+                            int num = val.get("Alegria");
+                            if(personaje.getEstado().getAlegria()< num){
+                                try {
+                                    iniciarEnfermar(e);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                        }
+                    }
+                }
                 
             }
         };
@@ -292,6 +419,20 @@ public class ControladorJuego implements ActionListener{
         } catch(Exception e){
             
         }
+    }
+    
+    public void iniciarEnfermar(Enfermedad e) throws InterruptedException{
+        hiloEnfermar = new Thread(){
+            @Override
+            public void run(){
+                personaje.actualizar(e.Enfermarse());
+                personaje.imprimirEstado();
+            }
+        };
+        hiloEnfermar.start();
+        Thread.sleep(30000);
+                
+        
     }
     public void addEnfermedades(){
         Enfermedad resul ;

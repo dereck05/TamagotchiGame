@@ -52,7 +52,7 @@ public class PersonajeGame extends Personaje  {
         if(val.containsKey("Musculo")){
             int num = val.get("Musculo");
             
-            this.apariencia.setMusculo(this.apariencia.getMusculo()+num >100 ? 100:this.apariencia.getMusculo()+num);
+            this.apariencia.setMusculo(this.apariencia.getMusculo()+num >100 ? 100:(this.apariencia.getMusculo()+num < 0 ? 0 :this.apariencia.getMusculo()+num ));
         }
         if(val.containsKey("Grasa")){
             int num = val.get("Grasa");
