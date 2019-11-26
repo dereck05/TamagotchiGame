@@ -17,8 +17,6 @@ import java.util.Date;
 public class Juego {
 
     private PersonajeGame personaje;
-    private ArrayList<Ejercicio> deportes;
-    private ArrayList<Enfermedad> enfermedades;
     private Bodega huerto;
     private Bodega bodega;
     private Date tiempo;
@@ -33,21 +31,6 @@ public class Juego {
         this.personaje = personaje;
     }
 
-    public ArrayList<Ejercicio> getDeportes() {
-        return deportes;
-    }
-
-    public void setDeportes(ArrayList<Ejercicio> deportes) {
-        this.deportes = deportes;
-    }
-
-    public ArrayList<Enfermedad> getEnfermedades() {
-        return enfermedades;
-    }
-
-    public void setEnfermedades(ArrayList<Enfermedad> enfermedades) {
-        this.enfermedades = enfermedades;
-    }
 
     public Bodega getHuerto() {
         return huerto;

@@ -59,6 +59,10 @@ public class ControladorJuego implements ActionListener,Runnable{
     
     public ControladorJuego(Vista v){
         this.vista = v;
+        this.enfermedades = new ArrayList<>();
+        this.ejercicios=new ArrayList<>();
+        this.alimentos=new ArrayList<>();
+        this.medicamentos=new ArrayList<>();
         this.vista.btnComer.addActionListener(this);
         this.vista.btnEjercicio.addActionListener(this);
         this.vista.btnEnfermar.addActionListener(this);
@@ -71,7 +75,11 @@ public class ControladorJuego implements ActionListener,Runnable{
         this.personaje.inicializar();
         this.personaje.imprimirEstado();
         this.addEnfermedades();
+        this.addAlimentos();
+        this.addEjercicios();
+        this.addMedicamentos();
         this.vista.setVisible(true);
+        
         this.h = 0;
         this.m = 0;
         this.s = 0;

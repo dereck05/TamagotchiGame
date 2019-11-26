@@ -45,7 +45,9 @@ public class Facade {
         return resul;
     }
     public Enfermedad crearEnfermedad(String option){
+        System.out.println(option);
         Enfermedad resul = this.factory.crearEnfermedad(option);
+        System.out.println(resul.getNombre());
         return resul;
     }
     
