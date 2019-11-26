@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Alimento.Alimento;
 import Ejercicios.Ejercicio;
 import Enfermedades.Enfermedad;
 import Estrategia.IStrategy;
@@ -83,7 +84,8 @@ public class ControladorJuego implements ActionListener,Runnable{
     public void actionPerformed(ActionEvent e) {
         switch(e.getActionCommand()){
             case "Comer":
-                comer(this.vista.txtComer.getText());
+                
+                comer(this.vista.txtComer.getText(),"",0);
                 break;
             case "Ejercitarse":
                 ejercitarse(this.vista.txtEjercicio.getText());
@@ -106,9 +108,10 @@ public class ControladorJuego implements ActionListener,Runnable{
         }
     }
     
-    public void comer(String option){
-        IStrategy resul = this.fachada.crearEstrategia(option);
-        
+    public void comer(String option,String nombreAlimento, int porcentajeEnergia){
+        IStrategy resul = this.fachada.crearComer(option,nombreAlimento, porcentajeEnergia);
+        HashMap<String,Integer> valores = resul.ejecutar();
+        this.personaje.actualizar(valores);
         proxy.setActivity(resul.toString());
         proxy.guardar();
         //return resul;

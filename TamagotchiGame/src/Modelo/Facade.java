@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Alimento.Alimento;
 import Ejercicios.Ejercicio;
 import Enfermedades.Enfermedad;
 import Estrategia.IStrategy;
@@ -21,9 +22,13 @@ public class Facade {
     public Facade(){
         this.factory = new SuperFactory();
     }
-    
+    public IStrategy crearComer(String option, String nombreAlimento , int  porcentajeEnergia){
+        Alimento alimento = this.factory.crearAlimento(nombreAlimento, porcentajeEnergia);
+        IStrategy resul = this.factory.crearEstrategia(option,alimento);
+        return resul;
+    }
     public IStrategy crearEstrategia(String option){
-        IStrategy resul = this.factory.crearEstrategia(option);
+        IStrategy resul = this.factory.crearEstrategia(option,null);
         return resul;
     }
     
@@ -41,8 +46,8 @@ public class Facade {
         return resul;
     }
     
-    public IStrategy crearAlimento(String option){
-        IStrategy resul = this.factory.crearEstrategia(option);
+    public Alimento crearAlimento(String option, int porcentajeEnergia){
+        Alimento resul = this.factory.crearAlimento(option, porcentajeEnergia);
         return resul;
     }
     
