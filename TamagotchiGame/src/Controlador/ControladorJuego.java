@@ -47,7 +47,10 @@ public class ControladorJuego implements ActionListener,Runnable{
     private ArrayList<Alimento> alimentos;
     
     private boolean estado;
-    Thread hilo;
+    Thread hiloTiempo;
+    Thread hiloVerEnfermedad;
+    Thread hiloEnfermar;
+    
     private String horas,minutos,segundos;
     private int h,m,s;
     private String day,month,year;
@@ -79,7 +82,9 @@ public class ControladorJuego implements ActionListener,Runnable{
         this.monthInt = 1;
         this.dateInString = "1-1-2019";
         this.proxy.setFilename("dia " + this.dateInString);
-        iniciar();
+        iniciarTiempo();
+        iniciarVerEnfermedad();
+        
     }
     
     
@@ -165,11 +170,85 @@ public class ControladorJuego implements ActionListener,Runnable{
         proxy.guardar();
     }
     
-    public void iniciar(){
-        hilo = new Thread(this);
+    public void iniciarTiempo(){
+        hiloTiempo = new Thread(){
+            @Override
+            public void run(){
+                while(estado == true){
+                    Calendar fecha = new GregorianCalendar();
+                    horas = Integer.toString(h);
+                    minutos = Integer.toString(m);
+                    segundos = Integer.toString(s);
+                    s++;
+                    //System.out.println(s);
+                    if(s>59){
+                        s = 0;
+                        m++;
+                    }
+                    if(s<9){
+                        vista.jlabelSegundos.setText("0" + segundos);
+                    } else{
+                        vista.jlabelSegundos.setText(segundos);
+                    }
+                    if(m>59){
+                        m = 0;
+                        h++;
+                    }
+                    if(m<9){
+                        vista.jlabelMinutos.setText("0" + minutos);
+                    } else{
+                        vista.jlabelMinutos.setText(minutos);
+                    }
+                    if(h == 23 && m == 45){
+                        h=0;
+                        if(monthInt == 2 || monthInt == 4 || monthInt == 6 || monthInt == 9 || monthInt == 11){
+                            if(dayInt > 30){
+                                dayInt = 1;
+                                monthInt++;
+                                setDate(dayInt,monthInt,2019);
+                            } else{
+                                dayInt++;
+                                setDate(dayInt,monthInt,2019);
+                            }
+                        } else{
+                            if(dayInt > 31){
+                                dayInt = 1;
+                                monthInt++;
+                                setDate(dayInt,monthInt,2019);
+                            } else{
+                                dayInt++;
+                                setDate(dayInt,monthInt,2019);
+                            }
+                        }
+                        this.proxy.setFilename("dia " + this.dateInString);
+                    }
+                    if(h<9){
+                        vista.jlabelHora.setText("0" + horas);
+                    } else{
+                        vista.jlabelHora.setText(horas);
+                    }
+
+                    try{
+                        Thread.sleep(1);
+                    } catch(InterruptedException e){
+                        System.out.println("Error: " + e);
+                    }
+                }
+            }
+        };
         estado = true;
-        hilo.start();
+        hiloTiempo.start();
 	setDate(1,1,2019);
+    }
+    public void iniciarVerEnfermedad(){
+        hiloVerEnfermedad = new Thread(){
+            @Override
+            public void run(){
+                
+            }
+        };
+        hiloVerEnfermedad.start();
+                
     }
     
     public void setDate(int pDay, int pMonth, int pYear){
@@ -289,68 +368,7 @@ public class ControladorJuego implements ActionListener,Runnable{
         resul=this.fachada.crearAlimento("Agua", 15);
         this.alimentos.add(resul);
     }   
-    public void run(){
-        while(estado == true){
-            Calendar fecha = new GregorianCalendar();
-            horas = Integer.toString(h);
-            minutos = Integer.toString(m);
-            segundos = Integer.toString(s);
-            s++;
-            //System.out.println(s);
-            if(s>59){
-                s = 0;
-                m++;
-            }
-            if(s<9){
-                vista.jlabelSegundos.setText("0" + segundos);
-            } else{
-                vista.jlabelSegundos.setText(segundos);
-            }
-            if(m>59){
-                m = 0;
-                h++;
-            }
-            if(m<9){
-                vista.jlabelMinutos.setText("0" + minutos);
-            } else{
-                vista.jlabelMinutos.setText(minutos);
-            }
-            if(h == 23 && m == 45){
-                h=0;
-                if(monthInt == 2 || monthInt == 4 || monthInt == 6 || monthInt == 9 || monthInt == 11){
-                    if(dayInt > 30){
-                        dayInt = 1;
-                        monthInt++;
-                        setDate(dayInt,monthInt,2019);
-                    } else{
-                        dayInt++;
-                        setDate(dayInt,monthInt,2019);
-                    }
-                } else{
-                    if(dayInt > 31){
-                        dayInt = 1;
-                        monthInt++;
-                        setDate(dayInt,monthInt,2019);
-                    } else{
-                        dayInt++;
-                        setDate(dayInt,monthInt,2019);
-                    }
-                }
-                this.proxy.setFilename("dia " + this.dateInString);
-            }
-            if(h<9){
-                vista.jlabelHora.setText("0" + horas);
-            } else{
-                vista.jlabelHora.setText(horas);
-            }
-                   
-            try{
-                Thread.sleep(1);
-            } catch(InterruptedException e){
-                System.out.println("Error: " + e);
-            }
-        }
-    }
+    
   
     public static void main(String[] args){
         Vista vista = new Vista();
