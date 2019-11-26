@@ -37,7 +37,7 @@ import javax.swing.JOptionPane;
  */
 public class ControladorJuego implements ActionListener{
     private Vista vista;
-    public Proxy proxy;
+    public  Proxy proxy;
     private PersonajeGame personaje;
     private Juego juego;
     public Facade fachada;
@@ -47,6 +47,7 @@ public class ControladorJuego implements ActionListener{
     private ArrayList<Alimento> alimentos;
     
     private boolean estado;
+    Thread hiloAlimentos;
     Thread hiloTiempo;
     Thread hiloVerEnfermedad;
     Thread hiloEnfermar;
@@ -177,10 +178,9 @@ public class ControladorJuego implements ActionListener{
         proxy.setActivity(resul.toStringCurar());
         proxy.guardar();
     }
+
     
     public void iniciarTiempo(){
-        final Proxy prox = this.proxy;
-        final String dateInString= this.dateInString;
         hiloTiempo = new Thread(){
             
             @Override
@@ -231,7 +231,7 @@ public class ControladorJuego implements ActionListener{
                                 setDate(dayInt,monthInt,2019);
                             }
                         }
-                        prox.setFilename("dia " + dateInString);
+                        proxy.setFilename("dia " + dateInString);
                     }
                     if(h<9){
                         vista.jlabelHora.setText("0" + horas);
