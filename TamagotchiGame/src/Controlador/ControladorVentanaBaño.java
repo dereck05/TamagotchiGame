@@ -33,23 +33,9 @@ public class ControladorVentanaBaño implements ActionListener {
     public void seleccionar(){
         String baño =(String)vb.comboBaño.getSelectedItem();
         controlador.estrategia(baño);
-        actualizarPorcentajes(baño);
+        controlador.actualizarPorcentajes(baño);
         
     }
-    public void actualizarPorcentajes(String necesidad){
-       vp.lblAlegria.setText(Integer.toString(this.controlador.getPersonaje().getEstado().getAlegria()));
-       vp.lblEnergia.setText(Integer.toString(this.controlador.getPersonaje().getEstado().getEnergia()));
-       vp.lblSaludMental.setText(Integer.toString(this.controlador.getPersonaje().getEstado().getSaludMental()));
-       vp.lblSaludFisica.setText(Integer.toString(this.controlador.getPersonaje().getEstado().getSaludFisica()));
-       vp.lblComida.setText(Integer.toString(this.controlador.getPersonaje().getEstado().getComida()));
-       vp.lblLiquidos.setText(Integer.toString(this.controlador.getPersonaje().getEstado().getLiquidos()));
-       vp.lblMusculo.setText(Integer.toString(this.controlador.getPersonaje().getApariencia().getMusculo()));
-       vp.lblGrasa.setText(Integer.toString(this.controlador.getPersonaje().getApariencia().getGrasa()));
-       vp.lblFuerza.setText(Integer.toString(this.controlador.getPersonaje().getApariencia().getFuerza()));
-       vp.lblEstatura.setText(Integer.toString(this.controlador.getPersonaje().getApariencia().getEstatura()));
-       vp.lblRapidez.setText(Integer.toString(this.controlador.getPersonaje().getApariencia().getRapidez()));
-       vp.lblEsfuerzo.setText(Integer.toString(this.controlador.getPersonaje().getApariencia().getEsfuerzo()));
-       vp.lblAuxiliar.setText(necesidad);
-    }
+
     
 }

@@ -6,11 +6,13 @@
 package Controlador;
 
 import Alimento.Alimento;
+import static Controlador.ControladorVentanaPrincipal.vp;
 import Ejercicios.Ejercicio;
 import Enfermedades.Enfermedad;
 import Estrategia.IStrategy;
 import Factory.SuperFactory;
 import Habilidades.Habilidad;
+import Medicamentos.ICura;
 import Medicamentos.Medicamento;
 import Model.Ataque;
 import Model.Personaje;
@@ -100,7 +102,7 @@ public class ControladorJuego implements ActionListener{
         this.addAmigos();
         this.addHabilidad();
         this.addEnemigos();
-       
+        
 //        this.vista.setVisible(true);
         this.socializar=false;
         this.pelear=false;
@@ -133,7 +135,7 @@ public class ControladorJuego implements ActionListener{
                 comer(this.vista.txtComer.getText(), alimentos.get(0));
                 break;
             case "Ejercitarse":
-                ejercitarse(this.vista.txtEjercicio.getText());
+                //ejercitarse(this.vista.txtEjercicio.getText());
                 break;
             case "Enfermarse":
                 enfermarse(this.vista.txtEnfermedad.getText());
@@ -145,7 +147,7 @@ public class ControladorJuego implements ActionListener{
                 habilidad(this.vista.txtHabilidad.getText());
                 break;
             case "Medicarse":
-                medicarse(this.vista.txtMedicina.getText());
+             //   medicarse(this.vista.txtMedicina.getText());
                 break;
             default:
                 JOptionPane.showMessageDialog(vista, "Opción no registrada");
@@ -170,13 +172,13 @@ public class ControladorJuego implements ActionListener{
         proxy.guardar();
         //return resul;
     }
-    public void ejercitarse(String option){
-        Ejercicio resul = this.fachada.crearEjercicio(option);
-        HashMap<String,Integer> valores = resul.ejercitarse();
+    public void ejercitarse(Ejercicio ejercicio){
+       // Ejercicio resul = this.fachada.crearEjercicio(option);
+        HashMap<String,Integer> valores = ejercicio.ejercitarse();
         this.juego.getPersonaje().actualizar(valores);
-        this.juego.getPersonaje().addHabilidad(resul.obtenerHabilidadGenerada());
+        this.juego.getPersonaje().addHabilidad(ejercicio.obtenerHabilidadGenerada());
         this.juego.getPersonaje().imprimirEstado();
-        proxy.setActivity(resul.toStringEjercitarse());
+        proxy.setActivity(ejercicio.toStringEjercitarse());
         proxy.guardar();
     }
     public void enfermarse(String option){
@@ -189,6 +191,7 @@ public class ControladorJuego implements ActionListener{
         proxy.guardar();
     }
     public void estrategia(String option){
+        System.out.println(option);
         IStrategy resul = this.fachada.crearEstrategia(option);
         HashMap<String,Integer> valores = resul.ejecutar();
         this.juego.getPersonaje().actualizar(valores);
@@ -196,6 +199,22 @@ public class ControladorJuego implements ActionListener{
         
         proxy.setActivity(resul.toString());
         proxy.guardar();
+    }
+    public void actualizarPorcentajes(String mensaje){
+       vp.lblAlegria.setText(Integer.toString(getPersonaje().getEstado().getAlegria()));
+       vp.lblEnergia.setText(Integer.toString(getPersonaje().getEstado().getEnergia()));
+       vp.lblSaludMental.setText(Integer.toString(getPersonaje().getEstado().getSaludMental()));
+       vp.lblSaludFisica.setText(Integer.toString(getPersonaje().getEstado().getSaludFisica()));
+       vp.lblComida.setText(Integer.toString(this.getPersonaje().getEstado().getComida()));
+       vp.lblLiquidos.setText(Integer.toString(this.getPersonaje().getEstado().getLiquidos()));
+       vp.lblMusculo.setText(Integer.toString(this.getPersonaje().getApariencia().getMusculo()));
+       vp.lblGrasa.setText(Integer.toString(this.getPersonaje().getApariencia().getGrasa()));
+       vp.lblFuerza.setText(Integer.toString(this.getPersonaje().getApariencia().getFuerza()));
+       vp.lblEstatura.setText(Integer.toString(this.getPersonaje().getApariencia().getEstatura()));
+       vp.lblRapidez.setText(Integer.toString(this.getPersonaje().getApariencia().getRapidez()));
+       vp.lblEsfuerzo.setText(Integer.toString(this.getPersonaje().getApariencia().getEsfuerzo()));
+       
+       vp.lblAuxiliar.setText(mensaje);
     }
     public void habilidad(String option){
         Habilidad resul = this.fachada.crearHabilidad(option);
@@ -206,13 +225,13 @@ public class ControladorJuego implements ActionListener{
         proxy.setActivity(resul.toString());
         proxy.guardar();
     }
-    public void medicarse(String option){
-        Medicamento resul = this.fachada.crearMedicamento(option);
-        HashMap<String,Integer> valores = resul.curar();
-        this.juego.getPersonaje().actualizar(valores);
+    public void medicarse(ICura cura){
+      //  Medicamento resul = this.fachada.crearMedicamento(option);
+      //  HashMap<String,Integer> valores = resul.curar();
+        this.juego.getPersonaje().actualizar(cura.curar());
         this.juego.getPersonaje().imprimirEstado();
         
-        proxy.setActivity(resul.toStringCurar());
+        proxy.setActivity(cura.toStringCurar());
         proxy.guardar();
     }
 
@@ -226,6 +245,7 @@ public class ControladorJuego implements ActionListener{
                         i=0;
                     }
                     juego.getHuerto().añadirAlimento(alimentos.get(i));
+                   // juego.getBodega().añadirAlimento(alimentos.get(i));
                     i++;
                     try{
                         sleep(9000);
@@ -305,6 +325,7 @@ public class ControladorJuego implements ActionListener{
                             int i= (int)Math.floor(Math.random()*amigos.size());
                             juego.getPersonaje().setAmigoActual(amigos.get(i));
                             estrategia("Socializar");
+                            actualizarPorcentajes("Estoy socializando con: "+amigos.get(i).getNombre());
                             socializar=true;
                         }
                         
@@ -488,6 +509,8 @@ public class ControladorJuego implements ActionListener{
                             enfermo=false;
                             if(resul==0){
                                 juego.getPersonaje().getEnfermedadesActivas().add(e);
+                                ControladorVentanaPrincipal.vp.btnCurarEnfermedad.setVisible(true);
+                                ControladorVentanaPrincipal.vp.btnCurarEnfermedad.setEnabled(true);
                             }
                             try {
                                 Thread.sleep(10000);
@@ -539,6 +562,70 @@ public class ControladorJuego implements ActionListener{
 
     public PersonajeGame getPersonaje() {
         return juego.getPersonaje();
+    }
+
+    public ArrayList<Enfermedad> getEnfermedades() {
+        return enfermedades;
+    }
+
+    public void setEnfermedades(ArrayList<Enfermedad> enfermedades) {
+        this.enfermedades = enfermedades;
+    }
+
+    public ArrayList<Medicamento> getMedicamentos() {
+        return medicamentos;
+    }
+
+    public void setMedicamentos(ArrayList<Medicamento> medicamentos) {
+        this.medicamentos = medicamentos;
+    }
+
+    public ArrayList<Ejercicio> getEjercicios() {
+        return ejercicios;
+    }
+
+    public void setEjercicios(ArrayList<Ejercicio> ejercicios) {
+        this.ejercicios = ejercicios;
+    }
+
+    public ArrayList<Alimento> getAlimentos() {
+        return alimentos;
+    }
+
+    public Juego getJuego() {
+        return juego;
+    }
+
+    public void setJuego(Juego juego) {
+        this.juego = juego;
+    }
+
+    public void setAlimentos(ArrayList<Alimento> alimentos) {
+        this.alimentos = alimentos;
+    }
+
+    public ArrayList<Personaje> getAmigos() {
+        return amigos;
+    }
+
+    public void setAmigos(ArrayList<Personaje> amigos) {
+        this.amigos = amigos;
+    }
+
+    public ArrayList<PersonajeGame> getEnemigos() {
+        return enemigos;
+    }
+
+    public void setEnemigos(ArrayList<PersonajeGame> enemigos) {
+        this.enemigos = enemigos;
+    }
+
+    public ArrayList<Habilidad> getHabilidades() {
+        return habilidades;
+    }
+
+    public void setHabilidades(ArrayList<Habilidad> habilidades) {
+        this.habilidades = habilidades;
     }
 
 
@@ -761,9 +848,10 @@ public class ControladorJuego implements ActionListener{
   
     public static void main(String[] args) throws InterruptedException{
         ControladorVentanaPrincipal.vp = new VentanaPrincipal();
-        ControladorVentanaPrincipal.vp.setVisible(true);
+        
         ControladorJuego c = new ControladorJuego(); 
         ControladorVentanaPrincipal cvp = new ControladorVentanaPrincipal(c);
+        ControladorVentanaPrincipal.vp.setVisible(true);
         
     }
 }

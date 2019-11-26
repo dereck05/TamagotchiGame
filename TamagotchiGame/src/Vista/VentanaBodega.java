@@ -175,7 +175,7 @@ public class VentanaBodega extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tablaAlimentos;
-    private javax.swing.JTable tablaMedicamentos;
+    public javax.swing.JTable tablaAlimentos;
+    public javax.swing.JTable tablaMedicamentos;
     // End of variables declaration//GEN-END:variables
 }
