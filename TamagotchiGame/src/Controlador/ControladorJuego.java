@@ -20,6 +20,7 @@ import Modelo.Proxy.Proxy;
 import Vista.Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Thread.sleep;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class ControladorJuego implements ActionListener{
     
     private boolean estado;
     Thread hiloAlimentos;
+    Thread hiloMedicamentos;
     Thread hiloTiempo;
     Thread hiloVerEnfermedad;
     Thread hiloEnfermar;
@@ -92,6 +94,8 @@ public class ControladorJuego implements ActionListener{
         this.dateInString = "1-1-2019";
         this.proxy.setFilename("dia " + this.dateInString);
         iniciarTiempo();
+        generarMedicamentos();
+        generarAlimentos();
         iniciarVerEnfermedad();
         
     }
@@ -99,6 +103,7 @@ public class ControladorJuego implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println("Este es el del boton "+ proxy.getFilename());
         switch(e.getActionCommand()){
             case "Comer":
                 //el get 0 se tiene que cambiar por el alimento seleccionado
@@ -179,7 +184,48 @@ public class ControladorJuego implements ActionListener{
         proxy.guardar();
     }
 
-    
+    public void generarAlimentos(){
+        hiloAlimentos = new Thread(){
+            @Override
+            public void run(){
+                int i=0;
+                while(estado==true){
+                    if(i>=alimentos.size()){
+                        i=0;
+                    }
+                    juego.getHuerto().añadirAlimento(alimentos.get(i));
+                    try{
+                        sleep(30000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        hiloAlimentos.start();
+    }
+        public void generarMedicamentos(){
+        hiloMedicamentos = new Thread(){
+            @Override
+            public void run(){
+                int i=0;
+                while(estado==true){
+                    if(i>=medicamentos.size()){
+                        i=0;
+                    }
+                    
+                    juego.getHuerto().añadirMedicamento(medicamentos.get(i));
+                    JOptionPane.showMessageDialog(vista, juego.getHuerto().getMedicamentos().get(medicamentos.get(i)));
+                    try{
+                        sleep(30000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        hiloMedicamentos.start();
+    }
     public void iniciarTiempo(){
         hiloTiempo = new Thread(){
             
@@ -232,6 +278,7 @@ public class ControladorJuego implements ActionListener{
                             }
                         }
                         proxy.setFilename("dia " + dateInString);
+                        System.out.println(proxy.getFilename());
                     }
                     if(h<9){
                         vista.jlabelHora.setText("0" + horas);

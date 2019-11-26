@@ -8,35 +8,54 @@ package Modelo;
 import Alimento.Alimento;
 import Medicamentos.Medicamento;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
  * @author derec
  */
 public class Bodega {
-    private ArrayList<Medicamento> medicamentos;
-    private ArrayList<Alimento> alimentos;
+    private HashMap<Medicamento,Integer> medicamentos;
+    private HashMap<Alimento,Integer> alimentos;
     
     public Bodega(){
-        this.alimentos = new ArrayList<>();
-        this.medicamentos = new ArrayList<>();
+        this.alimentos = new HashMap<>();
+        this.medicamentos = new HashMap<>();
     }
     
-  
+    public void añadirAlimento(Alimento a){
+        if(alimentos.containsKey(a)){
+            int cant = alimentos.get(a);
+            alimentos.replace(a, cant+1);
+        }else{
+            alimentos.put(a, 1);
+        }
+        
+    }
+    public void añadirMedicamento(Medicamento m){
+        if(medicamentos.containsKey(m)){
+            int cant = medicamentos.get(m);
+            
+            medicamentos.replace(m, cant+1);
+        }else{
+            medicamentos.put(m, 1);
+        }
+    }
 
-    public ArrayList<Medicamento> getMedicamentos() {
+    public HashMap<Medicamento, Integer> getMedicamentos() {
         return medicamentos;
     }
 
-    public void setMedicamentos(ArrayList<Medicamento> medicamentos) {
+    public void setMedicamentos(HashMap<Medicamento, Integer> medicamentos) {
         this.medicamentos = medicamentos;
     }
 
-    public ArrayList<Alimento> getAlimentos() {
+    public HashMap<Alimento, Integer> getAlimentos() {
         return alimentos;
     }
 
-    public void setAlimentos(ArrayList<Alimento> alimentos) {
+    public void setAlimentos(HashMap<Alimento, Integer> alimentos) {
         this.alimentos = alimentos;
     }
+    
 }

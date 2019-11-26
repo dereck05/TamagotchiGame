@@ -23,6 +23,10 @@ public class Juego {
     private int diasPorYear;
     private int minutosPorYear;
 
+    public Juego(){
+        huerto = new Bodega();
+        bodega = new Bodega();
+    }
     public PersonajeGame getPersonaje() {
         return personaje;
     }
