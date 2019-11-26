@@ -12,6 +12,8 @@ import Estrategia.IStrategy;
 import Factory.SuperFactory;
 import Habilidades.Habilidad;
 import Medicamentos.Medicamento;
+import Model.Ataque;
+import Model.Personaje;
 import Modelo.Facade;
 
 import Modelo.Juego;
@@ -20,6 +22,7 @@ import Modelo.Proxy.Proxy;
 import Vista.Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Thread.sleep;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,12 +48,17 @@ public class ControladorJuego implements ActionListener{
     private ArrayList<Medicamento> medicamentos;
     private ArrayList<Ejercicio> ejercicios;
     private ArrayList<Alimento> alimentos;
+    private ArrayList<Personaje> amigos;
+    private ArrayList<PersonajeGame> enemigos;
+    
     private boolean estado;
     Thread hiloAlimentos;
+    Thread hiloMedicamentos;
     Thread hiloTiempo;
     Thread hiloVerEnfermedad;
     Thread hiloEnfermar;
-    
+    Thread hiloSocializar;
+    private boolean socializar;
     private String horas,minutos,segundos;
     private int h,m,s;
     private String day,month,year;
@@ -63,6 +71,8 @@ public class ControladorJuego implements ActionListener{
         this.ejercicios=new ArrayList<>();
         this.alimentos=new ArrayList<>();
         this.medicamentos=new ArrayList<>();
+        this.amigos=new ArrayList<>();
+        this.enemigos= new ArrayList<>();
         this.vista.btnComer.addActionListener(this);
         this.vista.btnEjercicio.addActionListener(this);
         this.vista.btnEnfermar.addActionListener(this);
@@ -78,8 +88,9 @@ public class ControladorJuego implements ActionListener{
         this.addAlimentos();
         this.addEjercicios();
         this.addMedicamentos();
+        this.addAmigos();
         this.vista.setVisible(true);
-        
+        this.socializar=false;
         this.h = 0;
         this.m = 0;
         this.s = 0;
@@ -91,6 +102,9 @@ public class ControladorJuego implements ActionListener{
         this.dateInString = "1-1-2019";
         this.proxy.setFilename("dia " + this.dateInString);
         iniciarTiempo();
+        generarMedicamentos();
+        generarAlimentos();
+        socializar();
         iniciarVerEnfermedad();
         
     }
@@ -178,7 +192,76 @@ public class ControladorJuego implements ActionListener{
         proxy.guardar();
     }
 
-    
+    public void generarAlimentos(){
+        hiloAlimentos = new Thread(){
+            @Override
+            public void run(){
+                int i=0;
+                while(estado==true){
+                    if(i>=alimentos.size()){
+                        i=0;
+                    }
+                    juego.getHuerto().añadirAlimento(alimentos.get(i));
+                    i++;
+                    try{
+                        sleep(9000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        hiloAlimentos.start();
+    }
+        public void generarMedicamentos(){
+        hiloMedicamentos = new Thread(){
+            @Override
+            public void run(){
+                int i=0;
+                while(estado==true){
+                    if(i>=medicamentos.size()){
+                        i=0;
+                    }
+                    
+                    juego.getHuerto().añadirMedicamento(medicamentos.get(i));
+                    i++;
+                    try{
+                        sleep(9000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        hiloMedicamentos.start();
+    }
+    public void socializar(){
+        hiloSocializar = new Thread(){
+            @Override
+            public void run(){
+                while(estado==true){
+                    try {
+                        sleep(31000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    if(!socializar){
+                        int input = JOptionPane.showConfirmDialog(null, "¿Desea socilizar?");
+                        // 0=yes, 1=no, 2=cancel
+                        if(input==0){
+                            int i= (int)Math.floor(Math.random()*amigos.size()+1);
+                            personaje.setAmigoActual(amigos.get(i));
+                            estrategia("Socializar");
+                            socializar=true;
+                        }
+                        
+                    }
+
+                }
+            }
+        };
+        hiloSocializar.start();
+    }
     public void iniciarTiempo(){
         hiloTiempo = new Thread(){
             
@@ -190,7 +273,6 @@ public class ControladorJuego implements ActionListener{
                     minutos = Integer.toString(m);
                     segundos = Integer.toString(s);
                     s++;
-                    //System.out.println(s);
                     if(s>59){
                         s = 0;
                         m++;
@@ -231,6 +313,7 @@ public class ControladorJuego implements ActionListener{
                             }
                         }
                         proxy.setFilename("dia " + dateInString);
+                        socializar=false;
                     }
                     if(h<9){
                         vista.jlabelHora.setText("0" + horas);
@@ -448,6 +531,29 @@ public class ControladorJuego implements ActionListener{
         this.enfermedades.add(resul);
         resul = this.fachada.crearEnfermedad("Vomito");
         this.enfermedades.add(resul);
+    }
+    public void addAmigos(){
+        Model.SuperFactory sp =new Model.SuperFactory();
+        ArrayList<Ataque> n = new ArrayList<>();
+        Personaje resul;
+        resul=sp.createPersonaje(true, "Bichita1", "", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, n, null);
+        this.amigos.add(resul);
+        resul=sp.createPersonaje(true, "Bichita2", "", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, n, null);
+        this.amigos.add(resul);
+        resul=sp.createPersonaje(true, "Bichita3", "", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, n, null);
+        this.amigos.add(resul);
+        resul=sp.createPersonaje(true, "Bichita4", "", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, n, null);
+        this.amigos.add(resul);
+        resul=sp.createPersonaje(true, "Bichita5", "", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, n, null);
+        this.amigos.add(resul);
+        resul=sp.createPersonaje(true, "Bichita6", "", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, n, null);
+        this.amigos.add(resul);
+        resul=sp.createPersonaje(true, "Bichita7", "", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, n, null);
+        this.amigos.add(resul);
+        resul=sp.createPersonaje(true, "Bichita8", "", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, n, null);
+        this.amigos.add(resul);
+        
+        
     }
     public void addMedicamentos(){
         Medicamento resul;
