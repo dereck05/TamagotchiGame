@@ -5,6 +5,10 @@
  */
 package Controlador;
 
+import Ejercicios.Ejercicio;
+import Estrategia.IStrategy;
+import Modelo.Facade;
+import Modelo.PersonajeGame;
 import Vista.VentanaBaño;
 import Vista.VentanaBodega;
 import Vista.VentanaComedor;
@@ -16,6 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashMap;
 
 /**
  *
@@ -24,13 +29,20 @@ import java.awt.event.MouseListener;
 public class ControladorVentanaPrincipal implements ActionListener, MouseListener {
     public static VentanaPrincipal vp;
     private ControladorJuego controlador;
+    PersonajeGame personaje;
+//    Facade f;
+    
 
-    public ControladorVentanaPrincipal(ControladorJuego controlador) {
+    public ControladorVentanaPrincipal(ControladorJuego controlador,PersonajeGame p) {
+        this.personaje = p;
         this.controlador = controlador;
         this.vp.btnOpciones.addActionListener(this);
         this.vp.btnCurarEnfermedad.addActionListener(this);
         this.vp.btnCurarEnfermedad.setVisible(false);
-        
+//        f = new Facade();
+//        Ejercicio map = f.crearEjercicio("Boxeo");
+//        HashMap<String,Integer> m = map.ejercitarse();
+//        p.actualizar(m);
         inicializar();
     }
     public void inicializar(){

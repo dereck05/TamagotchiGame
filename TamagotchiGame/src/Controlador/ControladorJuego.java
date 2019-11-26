@@ -48,7 +48,7 @@ public class ControladorJuego implements ActionListener{
     private Vista vista;
     public  Proxy proxy;
   //  private PersonajeGame personaje;
-    private Juego juego;
+    public static Juego juego;
     public Facade fachada;
     private ArrayList<Enfermedad> enfermedades;
     private ArrayList<Enfermedad> enfermedadesActivas;
@@ -119,7 +119,7 @@ public class ControladorJuego implements ActionListener{
         iniciarTiempo();
         generarMedicamentos();
         generarAlimentos();
-        socializar();
+        //socializar();
         iniciarVerEnfermedad();
         pelearH();
         iniciarEnfermar();
@@ -850,7 +850,7 @@ public class ControladorJuego implements ActionListener{
         ControladorVentanaPrincipal.vp = new VentanaPrincipal();
         
         ControladorJuego c = new ControladorJuego(); 
-        ControladorVentanaPrincipal cvp = new ControladorVentanaPrincipal(c);
+        ControladorVentanaPrincipal cvp = new ControladorVentanaPrincipal(c,juego.getPersonaje());
         ControladorVentanaPrincipal.vp.setVisible(true);
         
     }

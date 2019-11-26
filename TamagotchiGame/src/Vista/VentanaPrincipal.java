@@ -19,12 +19,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+    Thread th;
+    boolean flag = true;
     public VentanaPrincipal() {
         initComponents();
         ball = new MovingBall(0, panelImagen.getWidth(), 0, panelImagen.getHeight());
         ball.setLocation(50, 50);
         Graphics g = panelImagen.getGraphics();
         ball.draw(g);
+        th = new Thread(){
+            @Override
+            public void run(){
+                while(true){
+                    houseClickCounter++;
+                    Graphics g = panelImagen.getGraphics();
+        //                for(int i = 0; i < 30; i++){
+
+                        //ball.headTowards(evt.getX(), evt.getY());
+                    ball.draw(g);
+        //                    try {
+        //                        TimeUnit.MILLISECONDS.sleep(300);
+        //                    } catch (InterruptedException ex) {
+        //                        Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        //                    }
+                    repaint();
+
+                }
+                
+//                }
+                
+                
+            }
+                   
+        
+        };
+        th.start();
     }
 
     public int roomClickCounter = 0;
@@ -527,27 +556,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblPiscinaMouseClicked
 
     private void lblImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenMouseClicked
-        // TODO add your handling code here:
-        houseClickCounter++;
-        
-        Graphics g = panelImagen.getGraphics();
         for(int i = 0; i < 30; i++){
-            
+
             ball.headTowards(evt.getX(), evt.getY());
-            drawFrame(g);
             try {
                 TimeUnit.MILLISECONDS.sleep(300);
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            repaint();
-            
-            
-            
+            ball.travel(4.0);
         }
-        
-        ball.draw(panelImagen.getGraphics());
-        repaint();
     }//GEN-LAST:event_lblImagenMouseClicked
 
     private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
