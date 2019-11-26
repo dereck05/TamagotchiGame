@@ -22,6 +22,7 @@ import Modelo.Facade;
 import Modelo.Juego;
 import Modelo.PersonajeGame;
 import Modelo.Proxy.Proxy;
+import Vista.VentanaPrincipal;
 import Vista.Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,7 +45,7 @@ import javax.swing.JOptionPane;
 public class ControladorJuego implements ActionListener{
     private Vista vista;
     public  Proxy proxy;
-    private PersonajeGame personaje;
+  //  private PersonajeGame personaje;
     private Juego juego;
     public Facade fachada;
     private ArrayList<Enfermedad> enfermedades;
@@ -72,8 +73,7 @@ public class ControladorJuego implements ActionListener{
     private int dayInt,monthInt,yearInt;
     private static String dateInString;
     
-    public ControladorJuego(Vista v) throws InterruptedException{
-        this.vista = v;
+    public ControladorJuego() throws InterruptedException{
         this.enfermedades = new ArrayList<>();
         this.enfermedadesActivas = new ArrayList<>();
         this.ejercicios=new ArrayList<>();
@@ -82,17 +82,17 @@ public class ControladorJuego implements ActionListener{
         this.amigos=new ArrayList<>();
         this.enemigos= new ArrayList<>();
         this.habilidades= new ArrayList<>();
-        this.vista.btnComer.addActionListener(this);
-        this.vista.btnEjercicio.addActionListener(this);
-        this.vista.btnEnfermar.addActionListener(this);
-        this.vista.btnHabilidad.addActionListener(this);
-        this.vista.btnMedicina.addActionListener(this);
+    //    this.vista.btnComer.addActionListener(this);
+     //   this.vista.btnEjercicio.addActionListener(this);
+     //   this.vista.btnEnfermar.addActionListener(this);
+     //   this.vista.btnHabilidad.addActionListener(this);
+     //   this.vista.btnMedicina.addActionListener(this);
         this.juego = new Juego();
         this.fachada = new Facade();
         this.proxy = new Proxy();
-        this.personaje = new PersonajeGame();
-        this.personaje.inicializar();
-        this.personaje.imprimirEstado();
+        
+        this.juego.getPersonaje().inicializar();
+        this.juego.getPersonaje().imprimirEstado();
         this.addEnfermedades();
         this.addAlimentos();
         this.addEjercicios();
@@ -101,7 +101,7 @@ public class ControladorJuego implements ActionListener{
         this.addHabilidad();
         this.addEnemigos();
        
-        this.vista.setVisible(true);
+//        this.vista.setVisible(true);
         this.socializar=false;
         this.pelear=false;
         this.h = 0;
@@ -158,14 +158,14 @@ public class ControladorJuego implements ActionListener{
     public void pelear(){
         ArrayList<Habilidad> habilidadesEscogidas = escogerHabilidades();
         for(int i=0; i<habilidadesEscogidas.size();i++){
-            this.personaje.getEnemigoActual().actualizar(habilidadesEscogidas.get(i).atacar());
-            this.personaje.actualizar(this.personaje.getEnemigoActual().getAtaque().get(i).atacar());
+            this.juego.getPersonaje().getEnemigoActual().actualizar(habilidadesEscogidas.get(i).atacar());
+            this.juego.getPersonaje().actualizar(this.juego.getPersonaje().getEnemigoActual().getAtaque().get(i).atacar());
         }
     }
     public void comer(String option,Alimento a){
         IStrategy resul = this.fachada.crearComer(option,a);
         HashMap<String,Integer> valores = resul.ejecutar();
-        this.personaje.actualizar(valores);
+        this.juego.getPersonaje().actualizar(valores);
         proxy.setActivity(resul.toString());
         proxy.guardar();
         //return resul;
@@ -173,17 +173,17 @@ public class ControladorJuego implements ActionListener{
     public void ejercitarse(String option){
         Ejercicio resul = this.fachada.crearEjercicio(option);
         HashMap<String,Integer> valores = resul.ejercitarse();
-        this.personaje.actualizar(valores);
-        this.personaje.addHabilidad(resul.obtenerHabilidadGenerada());
-        this.personaje.imprimirEstado();
+        this.juego.getPersonaje().actualizar(valores);
+        this.juego.getPersonaje().addHabilidad(resul.obtenerHabilidadGenerada());
+        this.juego.getPersonaje().imprimirEstado();
         proxy.setActivity(resul.toStringEjercitarse());
         proxy.guardar();
     }
     public void enfermarse(String option){
         Enfermedad resul = this.fachada.crearEnfermedad(option);
         HashMap<String,Integer> valores = resul.Enfermarse();
-        this.personaje.actualizar(valores);
-        this.personaje.imprimirEstado();
+        this.juego.getPersonaje().actualizar(valores);
+        this.juego.getPersonaje().imprimirEstado();
         
         proxy.setActivity(resul.toString());
         proxy.guardar();
@@ -191,8 +191,8 @@ public class ControladorJuego implements ActionListener{
     public void estrategia(String option){
         IStrategy resul = this.fachada.crearEstrategia(option);
         HashMap<String,Integer> valores = resul.ejecutar();
-        this.personaje.actualizar(valores);
-        this.personaje.imprimirEstado();
+        this.juego.getPersonaje().actualizar(valores);
+        this.juego.getPersonaje().imprimirEstado();
         
         proxy.setActivity(resul.toString());
         proxy.guardar();
@@ -200,8 +200,8 @@ public class ControladorJuego implements ActionListener{
     public void habilidad(String option){
         Habilidad resul = this.fachada.crearHabilidad(option);
         HashMap<String,Integer> valores = resul.atacar();
-        this.personaje.actualizar(valores);
-        this.personaje.imprimirEstado();
+        this.juego.getPersonaje().actualizar(valores);
+        this.juego.getPersonaje().imprimirEstado();
         
         proxy.setActivity(resul.toString());
         proxy.guardar();
@@ -209,8 +209,8 @@ public class ControladorJuego implements ActionListener{
     public void medicarse(String option){
         Medicamento resul = this.fachada.crearMedicamento(option);
         HashMap<String,Integer> valores = resul.curar();
-        this.personaje.actualizar(valores);
-        this.personaje.imprimirEstado();
+        this.juego.getPersonaje().actualizar(valores);
+        this.juego.getPersonaje().imprimirEstado();
         
         proxy.setActivity(resul.toStringCurar());
         proxy.guardar();
@@ -275,7 +275,7 @@ public class ControladorJuego implements ActionListener{
                         // 0=yes, 1=no, 2=cancel
                         if(input==0){
                             int i= (int)Math.floor(Math.random()*enemigos.size());
-                            personaje.setEnemigoActual(enemigos.get(i));
+                            juego.getPersonaje().setEnemigoActual(enemigos.get(i));
                             pelear();
                             pelear=true;
 
@@ -303,7 +303,7 @@ public class ControladorJuego implements ActionListener{
                         // 0=yes, 1=no, 2=cancel
                         if(input==0){
                             int i= (int)Math.floor(Math.random()*amigos.size());
-                            personaje.setAmigoActual(amigos.get(i));
+                            juego.getPersonaje().setAmigoActual(amigos.get(i));
                             estrategia("Socializar");
                             socializar=true;
                         }
@@ -331,18 +331,18 @@ public class ControladorJuego implements ActionListener{
                         m++;
                     }
                     if(s<9){
-                        vista.jlabelSegundos.setText("0" + segundos);
+                        ControladorVentanaPrincipal.vp.lblSegundos.setText("0" + segundos);
                     } else{
-                        vista.jlabelSegundos.setText(segundos);
+                        ControladorVentanaPrincipal.vp.lblSegundos.setText(segundos);
                     }
                     if(m>59){
                         m = 0;
                         h++;
                     }
                     if(m<9){
-                        vista.jlabelMinutos.setText("0" + minutos);
+                        ControladorVentanaPrincipal.vp.lblMinutos.setText("0" + minutos);
                     } else{
-                        vista.jlabelMinutos.setText(minutos);
+                        ControladorVentanaPrincipal.vp.lblMinutos.setText(minutos);
                     }
                     if(h == 23 && m == 45){
                         h=0;
@@ -369,9 +369,9 @@ public class ControladorJuego implements ActionListener{
                         socializar=false;
                     }
                     if(h<9){
-                        vista.jlabelHora.setText("0" + horas);
+                        ControladorVentanaPrincipal.vp.lblHoras.setText("0" + horas);
                     } else{
-                        vista.jlabelHora.setText(horas);
+                        ControladorVentanaPrincipal.vp.lblHoras.setText(horas);
                     }
 
                     try{
@@ -400,7 +400,7 @@ public class ControladorJuego implements ActionListener{
                         HashMap<String,Integer> val = e.generarPorcentajeAparacion();
                         if(val.containsKey("Musculo")){
                             int num = val.get("Musculo");
-                            if(personaje.getApariencia().getMusculo()<= num){  
+                            if(juego.getPersonaje().getApariencia().getMusculo()<= num){  
                                 enfermo=true;
                                // personaje.getEnfermedadesActivas().add(e);                               
                             }
@@ -408,77 +408,77 @@ public class ControladorJuego implements ActionListener{
                         }
                         else if(val.containsKey("Grasa")){
                             int num = val.get("Grasa");
-                            if(personaje.getApariencia().getGrasa()>= num){
+                            if(juego.getPersonaje().getApariencia().getGrasa()>= num){
                                 enfermo=true;
                                 //personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         else if(val.containsKey("Fuerza")){
                             int num = val.get("Fuerza");
-                            if(personaje.getApariencia().getFuerza()<= num){
+                            if(juego.getPersonaje().getApariencia().getFuerza()<= num){
                                 enfermo=true;
                                // personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         else if(val.containsKey("Estatura")){
                             int num = val.get("Estatura");
-                            if(personaje.getApariencia().getEstatura()<= num){
+                            if(juego.getPersonaje().getApariencia().getEstatura()<= num){
                                 enfermo=true;
                                 //personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         else if(val.containsKey("Rapidez")){
                             int num = val.get("Rapidez");
-                            if(personaje.getApariencia().getRapidez()<= num){
+                            if(juego.getPersonaje().getApariencia().getRapidez()<= num){
                                 enfermo=true;
                                 //personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         else if(val.containsKey("Esfuerzo")){
                             int num = val.get("Esfuerzo");
-                            if(personaje.getApariencia().getEsfuerzo()>= num){
+                            if(juego.getPersonaje().getApariencia().getEsfuerzo()>= num){
                                 enfermo=true;
                               //  personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         else if(val.containsKey("Energia")){
                             int num = val.get("Energia");
-                            if(personaje.getEstado().getEnergia()<= num){
+                            if(juego.getPersonaje().getEstado().getEnergia()<= num){
                                 enfermo=true;
                               //  personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         else if(val.containsKey("Salud fisica")){
                             int num = val.get("Salud fisica");
-                            if(personaje.getEstado().getSaludFisica()<= num){
+                            if(juego.getPersonaje().getEstado().getSaludFisica()<= num){
                                 enfermo=true;
                                 //personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         else if(val.containsKey("Salud mental")){
                             int num = val.get("Salud mental");
-                            if(personaje.getEstado().getSaludMental()<= num){
+                            if(juego.getPersonaje().getEstado().getSaludMental()<= num){
                                 enfermo=true;
                                // personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         else if(val.containsKey("comida injerida")){
                             int num = val.get("comida injerida");
-                            if(personaje.getEstado().getComidaIngerida()>= num){
+                            if(juego.getPersonaje().getEstado().getComidaIngerida()>= num){
                                 enfermo=true;
                               //  personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         else if(val.containsKey("Liquidos")){
                             int num = val.get("Liquidos");
-                            if(personaje.getEstado().getLiquidos()>= num){
+                            if(juego.getPersonaje().getEstado().getLiquidos()>= num){
                                 enfermo=true;
                               //  personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         else if(val.containsKey("Alegria")){
                             int num = val.get("Alegria");
-                            if(personaje.getEstado().getAlegria()<= num){
+                            if(juego.getPersonaje().getEstado().getAlegria()<= num){
                                 enfermo=true;
                                // personaje.getEnfermedadesActivas().add(e); 
                             }
@@ -487,7 +487,7 @@ public class ControladorJuego implements ActionListener{
                             int resul=preguntarEnfermedad(e.getNombre());
                             enfermo=false;
                             if(resul==0){
-                                personaje.getEnfermedadesActivas().add(e);
+                                juego.getPersonaje().getEnfermedadesActivas().add(e);
                             }
                             try {
                                 Thread.sleep(10000);
@@ -538,12 +538,10 @@ public class ControladorJuego implements ActionListener{
     }
 
     public PersonajeGame getPersonaje() {
-        return personaje;
+        return juego.getPersonaje();
     }
 
-    public void setPersonaje(PersonajeGame personaje) {
-        this.personaje = personaje;
-    }
+
     
     public void iniciarEnfermar() throws InterruptedException{
         Runnable runnable = new Runnable(){
@@ -555,10 +553,10 @@ public class ControladorJuego implements ActionListener{
                     } catch (InterruptedException ex) {
                         Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    for(int i=0; i<personaje.getEnfermedadesActivas().size();i++){
-                        System.out.println("Enfermo: "+personaje.getEnfermedadesActivas().get(i).getNombre());
-                        personaje.actualizar(personaje.getEnfermedadesActivas().get(i).Enfermarse());
-                        personaje.imprimirEstado();
+                    for(int i=0; i<juego.getPersonaje().getEnfermedadesActivas().size();i++){
+                        System.out.println("Enfermo: "+juego.getPersonaje().getEnfermedadesActivas().get(i).getNombre());
+                        juego.getPersonaje().actualizar(juego.getPersonaje().getEnfermedadesActivas().get(i).Enfermarse());
+                        juego.getPersonaje().imprimirEstado();
                     }
                 }
                 
@@ -657,7 +655,7 @@ public class ControladorJuego implements ActionListener{
     }
     public ArrayList<Habilidad> generarHabilidades(){
         ArrayList<Habilidad> habilidadesEnemigo = new ArrayList<>();
-        int numHabilidades= (int)Math.floor(Math.random()*personaje.getAtaque().size()+1);
+        int numHabilidades= (int)Math.floor(Math.random()*juego.getPersonaje().getAtaque().size()+1);
         int hab;
         for (int i=0; i<numHabilidades;i++){
             hab = (int)Math.floor(Math.random()*habilidades.size());
@@ -762,8 +760,10 @@ public class ControladorJuego implements ActionListener{
     
   
     public static void main(String[] args) throws InterruptedException{
-        Vista vista = new Vista();
-        ControladorJuego c = new ControladorJuego(vista); 
+        ControladorVentanaPrincipal.vp = new VentanaPrincipal();
+        ControladorVentanaPrincipal.vp.setVisible(true);
+        ControladorJuego c = new ControladorJuego(); 
+        ControladorVentanaPrincipal cvp = new ControladorVentanaPrincipal(c);
         
     }
 }

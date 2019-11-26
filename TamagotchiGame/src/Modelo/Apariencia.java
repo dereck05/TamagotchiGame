@@ -28,7 +28,7 @@ public class Apariencia {
 
     public Apariencia() {
         this.Musculo = 50;
-        this.Grasa = 50;
+        this.Grasa = 10;
         this.Fuerza = 50;
         this.Estatura = 50;
         this.Rapidez = 50;

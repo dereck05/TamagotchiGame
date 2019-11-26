@@ -26,6 +26,7 @@ public class Juego {
     public Juego(){
         huerto = new Bodega();
         bodega = new Bodega();
+        personaje = new PersonajeGame();
     }
     public PersonajeGame getPersonaje() {
         return personaje;

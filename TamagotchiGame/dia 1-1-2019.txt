@@ -46,3 +46,25 @@ Ejercitarse: Boxeo: habilidad generada: Llave, comportamientos: musculo: +12, fu
 Ejercitarse: Boxeo: habilidad generada: Llave, comportamientos: musculo: +12, fuerza: +10,rapidez: +10, energia: -15, alegria: +8, grasa: -8, salud fisica: +7, salud mental: +5, esfuerzo: +12.
 Ejercitarse: Boxeo: habilidad generada: Llave, comportamientos: musculo: +12, fuerza: +10,rapidez: +10, energia: -15, alegria: +8, grasa: -8, salud fisica: +7, salud mental: +5, esfuerzo: +12.
 Ejercitarse: Boxeo: habilidad generada: Llave, comportamientos: musculo: +12, fuerza: +10,rapidez: +10, energia: -15, alegria: +8, grasa: -8, salud fisica: +7, salud mental: +5, esfuerzo: +12.
+Orinar: liquidos: +20, rapidez: +20
+Orinar: liquidos: +20, rapidez: +20
+Orinar: liquidos: +20, rapidez: +20
+Orinar: liquidos: +20, rapidez: +20
+Orinar: liquidos: +20, rapidez: +20
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Orinar: liquidos: +20, rapidez: +20
+Orinar: liquidos: +20, rapidez: +20
+Orinar: liquidos: +20, rapidez: +20
+Orinar: liquidos: +20, rapidez: +20
+Orinar: liquidos: +20, rapidez: +20
+Orinar: liquidos: +20, rapidez: +20
