@@ -395,77 +395,75 @@ public class ControladorJuego implements ActionListener{
                         HashMap<String,Integer> val = e.generarPorcentajeAparacion();
                         if(val.containsKey("Musculo")){
                             int num = val.get("Musculo");
-                            if(personaje.getApariencia().getMusculo()< num){
-                                
-                                enfermedadesActivas.add(e);
-                                
+                            if(personaje.getApariencia().getMusculo()<= num){  
+                                personaje.getEnfermedadesActivas().add(e);                               
                             }
 
                         }
-                        if(val.containsKey("Grasa")){
+                        else if(val.containsKey("Grasa")){
                             int num = val.get("Grasa");
-                            if(personaje.getApariencia().getGrasa()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getApariencia().getGrasa()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        if(val.containsKey("Fuerza")){
+                        else if(val.containsKey("Fuerza")){
                             int num = val.get("Fuerza");
-                            if(personaje.getApariencia().getFuerza()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getApariencia().getFuerza()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        if(val.containsKey("Estatura")){
+                        else if(val.containsKey("Estatura")){
                             int num = val.get("Estatura");
-                            if(personaje.getApariencia().getEstatura()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getApariencia().getEstatura()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        if(val.containsKey("Rapidez")){
+                        else if(val.containsKey("Rapidez")){
                             int num = val.get("Rapidez");
-                            if(personaje.getApariencia().getRapidez()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getApariencia().getRapidez()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        if(val.containsKey("Esfuerzo")){
+                        else if(val.containsKey("Esfuerzo")){
                             int num = val.get("Esfuerzo");
-                            if(personaje.getApariencia().getEsfuerzo()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getApariencia().getEsfuerzo()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        if(val.containsKey("Energia")){
+                        else if(val.containsKey("Energia")){
                             int num = val.get("Energia");
-                            if(personaje.getEstado().getEnergia()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getEstado().getEnergia()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        if(val.containsKey("Salud fisica")){
+                        else if(val.containsKey("Salud fisica")){
                             int num = val.get("Salud fisica");
-                            if(personaje.getEstado().getSaludFisica()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getEstado().getSaludFisica()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        if(val.containsKey("Salud mental")){
+                        else if(val.containsKey("Salud mental")){
                             int num = val.get("Salud mental");
-                            if(personaje.getEstado().getSaludMental()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getEstado().getSaludMental()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        if(val.containsKey("comida injerida")){
+                        else if(val.containsKey("comida injerida")){
                             int num = val.get("comida injerida");
-                            if(personaje.getEstado().getComidaIngerida()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getEstado().getComidaIngerida()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        if(val.containsKey("Liquidos")){
+                        else if(val.containsKey("Liquidos")){
                             int num = val.get("Liquidos");
-                            if(personaje.getEstado().getLiquidos()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getEstado().getLiquidos()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        if(val.containsKey("Alegria")){
+                        else if(val.containsKey("Alegria")){
                             int num = val.get("Alegria");
-                            if(personaje.getEstado().getAlegria()< num){
-                                enfermedadesActivas.add(e);
+                            if(personaje.getEstado().getAlegria()<= num){
+                                personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                     }
@@ -528,9 +526,9 @@ public class ControladorJuego implements ActionListener{
                     } catch (InterruptedException ex) {
                         Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    for(Enfermedad e: enfermedadesActivas){
-                        System.out.println("Enfermo:"+e.getNombre());
-                        personaje.actualizar(e.Enfermarse());
+                    for(int i=0; i<personaje.getEnfermedadesActivas().size();i++){
+                        System.out.println("Enfermo: "+personaje.getEnfermedadesActivas().get(i).getNombre());
+                        personaje.actualizar(personaje.getEnfermedadesActivas().get(i).Enfermarse());
                         personaje.imprimirEstado();
                     }
                 }

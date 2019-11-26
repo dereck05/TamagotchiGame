@@ -20,7 +20,7 @@ public class PersonajeGame extends Personaje  {
     private Estado estado;
     private Apariencia apariencia;
     private String tipo;
-    private String enfermedadActual;
+    private ArrayList<Enfermedad> enfermedadesActivas;
     private Personaje amigoActual;
     private PersonajeGame enemigoActual;
 
@@ -43,7 +43,7 @@ public class PersonajeGame extends Personaje  {
         this.estado = new Estado();
         this.apariencia = new Apariencia();
         this.tipo = ""; // nose que es
-        this.enfermedadActual = "";
+        this.enfermedadesActivas= new ArrayList<Enfermedad>();
     }
     
     public void actualizar(HashMap<String,Integer> val){
@@ -131,6 +131,14 @@ public class PersonajeGame extends Personaje  {
         this.edad = edad;
     }
 
+    public ArrayList<Enfermedad> getEnfermedadesActivas() {
+        return enfermedadesActivas;
+    }
+
+    public void setEnfermedadesActivas(ArrayList<Enfermedad> enfermedadesActivas) {
+        this.enfermedadesActivas = enfermedadesActivas;
+    }
+
     public ArrayList<IStrategy> getComportamientos() {
         return comportamientos;
     }
@@ -171,13 +179,7 @@ public class PersonajeGame extends Personaje  {
         this.tipo = tipo;
     }
 
-    public String getEnfermedadActual() {
-        return enfermedadActual;
-    }
 
-    public void setEnfermedadActual(String enfermedadActual) {
-        this.enfermedadActual = enfermedadActual;
-    }
 
     public Personaje getAmigoActual() {
         return amigoActual;
