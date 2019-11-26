@@ -119,7 +119,7 @@ public class ControladorJuego implements ActionListener{
         iniciarTiempo();
         generarMedicamentos();
         generarAlimentos();
-        //socializar();
+        socializar();
         iniciarVerEnfermedad();
         pelearH();
         iniciarEnfermar();
@@ -341,7 +341,9 @@ public class ControladorJuego implements ActionListener{
             
             @Override
             public void run(){
+                int dia=1;
                 while(estado == true){
+                    ControladorVentanaPrincipal.vp.lblDia.setText(Integer.toString(dia));
                     Calendar fecha = new GregorianCalendar();
                     horas = Integer.toString(h);
                     minutos = Integer.toString(m);
@@ -387,6 +389,12 @@ public class ControladorJuego implements ActionListener{
                             }
                         }
                         proxy.setFilename("dia " + dateInString);
+                        dia = dia+1;
+                        if(dia%2==0){
+                            int edad= juego.getPersonaje().getEdad();
+                            juego.getPersonaje().setEdad(edad+1);
+                            actualizarPorcentajes("Cumplí "+edad+1+" años");
+                        }
                         socializar=false;
                     }
                     if(h<9){
