@@ -636,7 +636,7 @@ public class ControladorJuego implements ActionListener{
             public void run(){
                 while(true){
                     try {
-                    sleep(5000);
+                        sleep(5000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
                     }
