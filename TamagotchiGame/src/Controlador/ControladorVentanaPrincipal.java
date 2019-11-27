@@ -129,7 +129,7 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
            vp.goTo("Piscina");
         }  
         });
-        vp.lblPiscina.addMouseListener(new MouseAdapter(){  
+        vp.lblJardin.addMouseListener(new MouseAdapter(){  
         public void mouseClicked(MouseEvent e){  
            vp.goTo("Jardin");
            meditar();
@@ -150,6 +150,7 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
     }
     //Llamar cuando toca el cuarto
     public void dormir(){
+        
         controlador.estrategia("Dormir");
         controlador.actualizarPorcentajes("Estoy durmiendo");
         ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/dormir.jpg"));
@@ -169,9 +170,7 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
         VentanaGimnasio ventana = new VentanaGimnasio();
         ControladorGimnasio cg = new ControladorGimnasio(ventana,controlador,vp);
         ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/ejercitarse.gif"));
-        Image image = imageIcon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-        imageIcon = new ImageIcon(newimg);  // transform it back
+
         vp.lblPersonaje.setIcon(imageIcon);
     }
     //Llamar cuando va al huerto
@@ -183,6 +182,9 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
     public void comer(){
         VentanaComedor ventana = new VentanaComedor();
         ControladorComedor cg = new ControladorComedor(ventana,controlador,vp);
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/comer.gif"));
+
+        vp.lblPersonaje.setIcon(imageIcon);
     }
     //Llamar cuando va a la bodega
     public void bodega(){

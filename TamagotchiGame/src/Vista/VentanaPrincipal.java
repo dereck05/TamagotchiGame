@@ -105,8 +105,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblPiscina = new javax.swing.JLabel();
         lblFutbol = new javax.swing.JLabel();
         lblPeleas = new javax.swing.JLabel();
-        lblComedor = new javax.swing.JLabel();
+        lblJardin = new javax.swing.JLabel();
         lblHuerto = new javax.swing.JLabel();
+        lblComedor = new javax.swing.JLabel();
+        lblJardin1 = new javax.swing.JLabel();
+        lblCocina = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
         lblPersonaje = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -206,7 +209,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 lblPeleasMouseClicked(evt);
             }
         });
-        panelImagen.add(lblPeleas, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, 130, 210));
+        panelImagen.add(lblPeleas, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 130, 210));
+
+        lblJardin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblJardinMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblJardin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 170, 130));
+
+        lblHuerto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHuertoMouseClicked(evt);
+            }
+        });
+        panelImagen.add(lblHuerto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 294, 160, 120));
 
         lblComedor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -215,12 +232,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         panelImagen.add(lblComedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 294, 130, 250));
 
-        lblHuerto.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblJardin1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblHuertoMouseClicked(evt);
+                lblJardin1MouseClicked(evt);
             }
         });
-        panelImagen.add(lblHuerto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 294, 160, 120));
+        panelImagen.add(lblJardin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 170, 130));
+        panelImagen.add(lblCocina, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 270, 130));
+        lblCocina.getAccessibleContext().setAccessibleParent(panelImagen);
 
         lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/plano_4.png"))); // NOI18N
         lblImagen.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -375,27 +394,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lblHumor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(lblPersonaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblPersonaje1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblAuxiliar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel20))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDia)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblHoras)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblMinutos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblSegundos))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addGap(31, 31, 31)
-                        .addComponent(lblEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(lblEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblPersonaje1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAuxiliar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel20))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDia)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblHoras)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblMinutos)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblSegundos)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,63 +448,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(lblLiquidos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblComida, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblGrasa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMusculo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel13)
+                                .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel15))
+                                .addComponent(lblGrasa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblFuerza, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel14)))
-                        .addGap(51, 51, 51)
+                                .addComponent(jLabel10)
+                                .addGap(60, 60, 60)
+                                .addComponent(lblMusculo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFuerza, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEstatura, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14))
+                        .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblRapidez, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblEsfuerzo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(496, 496, 496)
-                        .addComponent(btnCurarEnfermedad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(454, 454, 454)
+                        .addComponent(btnCurarEnfermedad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel12)
-                            .addComponent(lblMusculo)
-                            .addComponent(jLabel4)
-                            .addComponent(lblAlegria)
-                            .addComponent(jLabel6)
-                            .addComponent(lblSaludMental)
-                            .addComponent(jLabel8)
-                            .addComponent(lblComida)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel2)))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -495,8 +506,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
                             .addComponent(lblEdad))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblPersonaje1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(lblPersonaje1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
@@ -510,26 +521,40 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCurarEnfermedad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCurarEnfermedad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel12)
+                            .addComponent(lblMusculo)
+                            .addComponent(jLabel4)
+                            .addComponent(lblAlegria)
+                            .addComponent(jLabel6)
+                            .addComponent(lblSaludMental)
+                            .addComponent(jLabel8)
+                            .addComponent(lblComida)
                             .addComponent(lblFuerza)
-                            .addComponent(lblRapidez))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                            .addComponent(jLabel14))
+                        .addGap(2, 2, 2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblRapidez)
+                        .addGap(7, 7, 7)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel15)
                     .addComponent(jLabel11)
                     .addComponent(lblGrasa)
-                    .addComponent(lblEstatura)
                     .addComponent(lblEsfuerzo)
                     .addComponent(jLabel5)
                     .addComponent(lblEnergia)
                     .addComponent(jLabel7)
                     .addComponent(lblSaludFisica)
                     .addComponent(jLabel9)
-                    .addComponent(lblLiquidos))
+                    .addComponent(lblLiquidos)
+                    .addComponent(lblEstatura))
                 .addContainerGap())
         );
 
@@ -562,9 +587,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblHuertoMouseClicked
 
-    private void lblComedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblComedorMouseClicked
+    private void lblJardinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblJardinMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblComedorMouseClicked
+    }//GEN-LAST:event_lblJardinMouseClicked
 
     private void lblPeleasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPeleasMouseClicked
         // TODO add your handling code here:
@@ -599,6 +624,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void btnCurarEnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCurarEnfermedadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCurarEnfermedadActionPerformed
+
+    private void lblComedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblComedorMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblComedorMouseClicked
+
+    private void lblJardin1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblJardin1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblJardin1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -660,6 +693,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JLabel lblAuxiliar;
     public javax.swing.JLabel lblBano;
     public javax.swing.JLabel lblBodega;
+    public javax.swing.JLabel lblCocina;
     public javax.swing.JLabel lblComedor;
     public javax.swing.JLabel lblComida;
     public javax.swing.JLabel lblCuarto;
@@ -676,6 +710,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JLabel lblHuerto;
     public javax.swing.JLabel lblHumor;
     public javax.swing.JLabel lblImagen;
+    public javax.swing.JLabel lblJardin;
+    public javax.swing.JLabel lblJardin1;
     public javax.swing.JLabel lblLiquidos;
     public javax.swing.JLabel lblMinutos;
     public javax.swing.JLabel lblMusculo;

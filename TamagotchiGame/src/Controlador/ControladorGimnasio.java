@@ -8,9 +8,11 @@ package Controlador;
 import static Controlador.ControladorVentanaPrincipal.vp;
 import Vista.VentanaGimnasio;
 import Vista.VentanaPrincipal;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -27,6 +29,7 @@ public class ControladorGimnasio implements ActionListener {
         this.gimnasio.btnSeleccionar.addActionListener(this);
         llenarLista();
         this.gimnasio.setVisible(true);
+       
         
     }
     public void llenarLista(){
