@@ -37,13 +37,14 @@ public class Estado {
         return Humor;
     }
 
-    public Estado(Humor humor, int energia, int saludMental, int saludFisica,int comida,int liquid) {
+    public Estado(Humor humor, int alegria,int energia, int saludMental, int saludFisica,int comida,int liquid) {
         this.Humor = humor;
         this.Energia = energia;
         this.SaludMental = saludMental;
         this.SaludFisica = saludFisica;
         this.Comida = comida;
         this.Liquidos = liquid;
+        this.Alegria=alegria;
     }
 
     public int getComidaIngerida() {

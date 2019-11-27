@@ -24,6 +24,8 @@ import Modelo.Facade;
 import Modelo.Juego;
 import Modelo.PersonajeGame;
 import Modelo.Proxy.Proxy;
+import Vista.VentanaEscogerHabilidades;
+import Vista.VentanaPelear;
 import Vista.VentanaPrincipal;
 import Vista.Vista;
 import java.awt.event.ActionEvent;
@@ -101,7 +103,7 @@ public class ControladorJuego implements ActionListener{
         this.addMedicamentos();
         this.addAmigos();
         this.addHabilidad();
-        this.addEnemigos();
+        
         
 //        this.vista.setVisible(true);
         this.socializar=false;
@@ -119,9 +121,9 @@ public class ControladorJuego implements ActionListener{
         iniciarTiempo();
         generarMedicamentos();
         generarAlimentos();
-        //socializar();
+        socializar();
         iniciarVerEnfermedad();
-        pelearH();
+        pelearH(this);
         iniciarEnfermar();
         
     }
@@ -154,15 +156,13 @@ public class ControladorJuego implements ActionListener{
                 break;
         }
     }
-    public ArrayList<Habilidad> escogerHabilidades(){
-        return null;
-    }
-    public void pelear(){
-        ArrayList<Habilidad> habilidadesEscogidas = escogerHabilidades();
-        for(int i=0; i<habilidadesEscogidas.size();i++){
-            this.juego.getPersonaje().getEnemigoActual().actualizar(habilidadesEscogidas.get(i).atacar());
-            this.juego.getPersonaje().actualizar(this.juego.getPersonaje().getEnemigoActual().getAtaque().get(i).atacar());
-        }
+
+    public void pelear(ArrayList<Habilidad> habilidadesEscogidas, int contador){
+
+            this.juego.getPersonaje().getEnemigoActual().actualizar(habilidadesEscogidas.get(contador).atacar());
+            this.juego.getPersonaje().actualizar(this.juego.getPersonaje().getEnemigoActual().getAtaque().get(contador).atacar());
+            actualizarPorcentajes("Estoy peleando");
+
     }
     public void comer(String option,Alimento a){
         IStrategy resul = this.fachada.crearComer(option,a);
@@ -279,7 +279,7 @@ public class ControladorJuego implements ActionListener{
         };
         hiloMedicamentos.start();
     }
-    public void pelearH(){
+    public void pelearH(ControladorJuego controlador){
         hiloPelear = new Thread(){
             @Override
             public void run(){
@@ -294,9 +294,13 @@ public class ControladorJuego implements ActionListener{
                         int input = JOptionPane.showConfirmDialog(null, "¿Desea aceptar la pelea?");
                         // 0=yes, 1=no, 2=cancel
                         if(input==0){
+                            addEnemigos();
                             int i= (int)Math.floor(Math.random()*enemigos.size());
                             juego.getPersonaje().setEnemigoActual(enemigos.get(i));
-                            pelear();
+                            VentanaEscogerHabilidades ventana = new VentanaEscogerHabilidades();
+                            ControladorEscogerHabilidades cea = new ControladorEscogerHabilidades(controlador,juego.getPersonaje().getEnemigoActual().getAtaque().size(),ventana);
+                           // System.out.println(controlador.getJuego().getPersonaje().getApariencia().getEsfuerzo());
+//pelear();
                             pelear=true;
 
                         }
@@ -341,7 +345,9 @@ public class ControladorJuego implements ActionListener{
             
             @Override
             public void run(){
+                int dia=1;
                 while(estado == true){
+                    ControladorVentanaPrincipal.vp.lblDia.setText(Integer.toString(dia));
                     Calendar fecha = new GregorianCalendar();
                     horas = Integer.toString(h);
                     minutos = Integer.toString(m);
@@ -387,6 +393,12 @@ public class ControladorJuego implements ActionListener{
                             }
                         }
                         proxy.setFilename("dia " + dateInString);
+                        dia = dia+1;
+                        if(dia%2==0){
+                            int edad= juego.getPersonaje().getEdad();
+                            juego.getPersonaje().setEdad(edad+1);
+                            actualizarPorcentajes("Cumplí "+edad+1+" años");
+                        }
                         socializar=false;
                     }
                     if(h<9){
@@ -700,42 +712,42 @@ public class ControladorJuego implements ActionListener{
         Estado estado1;
         PersonajeGame personajeGame;
         apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
-        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
         habilidadesEnemigo = generarHabilidades();
         personajeGame = new PersonajeGame("Juanito8","",habilidadesEnemigo,estado1,apariencia);
         this.enemigos.add(personajeGame);
         apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
-        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
         habilidadesEnemigo = generarHabilidades();
         personajeGame = new PersonajeGame("Juanito7","",habilidadesEnemigo,estado1,apariencia);
         this.enemigos.add(personajeGame);
         apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
-        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
         habilidadesEnemigo = generarHabilidades();
         personajeGame = new PersonajeGame("Juanito6","",habilidadesEnemigo,estado1,apariencia);
         this.enemigos.add(personajeGame);
         apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
-        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
         habilidadesEnemigo = generarHabilidades();
         personajeGame = new PersonajeGame("Juanito5","",habilidadesEnemigo,estado1,apariencia);
         this.enemigos.add(personajeGame);
         apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
-        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
         habilidadesEnemigo = generarHabilidades();
         personajeGame = new PersonajeGame("Juanito4","",habilidadesEnemigo,estado1,apariencia);
         this.enemigos.add(personajeGame);
         apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
-        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
         habilidadesEnemigo = generarHabilidades();
         personajeGame = new PersonajeGame("Juanito3","",habilidadesEnemigo,estado1,apariencia);
         this.enemigos.add(personajeGame);
         apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
-        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
         habilidadesEnemigo = generarHabilidades();
         personajeGame = new PersonajeGame("Juanito2","",habilidadesEnemigo,estado1,apariencia);
         this.enemigos.add(personajeGame);
         apariencia = new Apariencia((int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
-        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
+        estado1 = new Estado(Humor.FELIZ,(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1),(int)Math.floor(Math.random()*100+1));
         habilidadesEnemigo = generarHabilidades();
         personajeGame = new PersonajeGame("Juanito1","",habilidadesEnemigo,estado1,apariencia);
         this.enemigos.add(personajeGame);
@@ -743,6 +755,7 @@ public class ControladorJuego implements ActionListener{
     public ArrayList<Habilidad> generarHabilidades(){
         ArrayList<Habilidad> habilidadesEnemigo = new ArrayList<>();
         int numHabilidades= (int)Math.floor(Math.random()*juego.getPersonaje().getAtaque().size()+1);
+        System.out.println(numHabilidades);
         int hab;
         for (int i=0; i<numHabilidades;i++){
             hab = (int)Math.floor(Math.random()*habilidades.size());
