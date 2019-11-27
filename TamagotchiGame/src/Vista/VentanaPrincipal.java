@@ -633,6 +633,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             ball.travel(3.0);
         }
         
+        lblAuxiliar.setText("Sin moverme");
         
     }//GEN-LAST:event_lblImagenMouseClicked
 
