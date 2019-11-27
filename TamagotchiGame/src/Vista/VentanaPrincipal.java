@@ -70,7 +70,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 x = 100;
                 y = 450;
                 break;
-                    
+            case "Huerto":
+                x = 100;
+                y = 330;
+                break;
+            case "Comedor":
+                x = 330;
+                y = 330;
+                break;
+            case "Cocina":
+                x = 500;
+                y = 450;
+                break;
+            case "Peleas":
+                x = 800;
+                y = 450;
+                break;
+            case "Futbol":
+                x = 950;
+                y = 450;
+                break;
             default:
                 break;
         }

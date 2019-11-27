@@ -124,17 +124,83 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
         }  
         }); 
         
-        vp.lblPiscina.addMouseListener(new MouseAdapter(){  
-        public void mouseClicked(MouseEvent e){  
-           vp.goTo("Piscina");
-        }  
-        });
         vp.lblJardin.addMouseListener(new MouseAdapter(){  
         public void mouseClicked(MouseEvent e){  
            vp.goTo("Jardin");
            meditar();
         }  
         });
+        vp.lblHuerto.addMouseListener(new MouseAdapter(){  
+        public void mouseClicked(MouseEvent e){  
+           vp.goTo("Huerto");
+           huerto();
+        }  
+        });
+        vp.lblComedor.addMouseListener(new MouseAdapter(){  
+        public void mouseClicked(MouseEvent e){  
+           vp.goTo("Comedor");
+           comedor();
+        }  
+        });
+        vp.lblPiscina.addMouseListener(new MouseAdapter(){  
+        public void mouseClicked(MouseEvent e){  
+           vp.goTo("Piscina");
+           piscina();
+        }  
+        });
+        vp.lblPeleas.addMouseListener(new MouseAdapter(){  
+        public void mouseClicked(MouseEvent e){  
+           vp.goTo("Peleas");
+           peleas();
+        }  
+        });
+        vp.lblCocina.addMouseListener(new MouseAdapter(){  
+        public void mouseClicked(MouseEvent e){  
+           vp.goTo("Cocina");
+           cocina();
+        }  
+        });
+        vp.lblFutbol.addMouseListener(new MouseAdapter(){  
+        public void mouseClicked(MouseEvent e){  
+           vp.goTo("Futbol");
+           futbol();
+        }  
+        });
+    }
+    
+    public void huerto(){
+        VentanaHuerto ventana = new VentanaHuerto();
+        ControladorHuerto cvb = new ControladorHuerto(ventana,controlador,vp);
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/huerta.png"));
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);  // transform it back
+        vp.lblPersonaje.setIcon(imageIcon);
+    }
+    public void comedor(){
+        VentanaComedor ventana = new VentanaComedor();
+        ControladorComedor cvb = new ControladorComedor(ventana,controlador,vp);
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/comer.gif"));
+        vp.lblPersonaje.setIcon(imageIcon);
+    }
+    public void piscina(){
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/piscina.jpg"));
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);  // transform it back
+        vp.lblPersonaje.setIcon(imageIcon);
+    }
+    public void peleas(){
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/pelear.gif"));
+        vp.lblPersonaje.setIcon(imageIcon);
+    }
+    public void cocina(){
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/cocinar.gif"));
+        vp.lblPersonaje.setIcon(imageIcon);
+    }
+    public void futbol(){
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/futbol.gif"));
+        vp.lblPersonaje.setIcon(imageIcon);
     }
     
     
@@ -190,6 +256,11 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
     public void bodega(){
         VentanaBodega ventana = new VentanaBodega();
         ControladorBodega cb = new ControladorBodega(controlador,ventana,vp);
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/bodega.jpg"));
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);  // transform it back
+        vp.lblPersonaje.setIcon(imageIcon);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
