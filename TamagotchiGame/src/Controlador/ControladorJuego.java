@@ -60,7 +60,7 @@ public class ControladorJuego implements ActionListener{
     private ArrayList<Personaje> amigos;
     private ArrayList<PersonajeGame> enemigos;
     private ArrayList<Habilidad> habilidades;
-    
+    private int dia;
     private boolean estado;
     private Thread hiloAlimentos;
     private Thread hiloMedicamentos;
@@ -86,6 +86,7 @@ public class ControladorJuego implements ActionListener{
         this.amigos=new ArrayList<>();
         this.enemigos= new ArrayList<>();
         this.habilidades= new ArrayList<>();
+        this.dia=1;
     //    this.vista.btnComer.addActionListener(this);
      //   this.vista.btnEjercicio.addActionListener(this);
      //   this.vista.btnEnfermar.addActionListener(this);
@@ -161,6 +162,7 @@ public class ControladorJuego implements ActionListener{
 
             this.juego.getPersonaje().getEnemigoActual().actualizar(habilidadesEscogidas.get(contador).atacar());
             this.juego.getPersonaje().actualizar(this.juego.getPersonaje().getEnemigoActual().getAtaque().get(contador).atacar());
+            
             actualizarPorcentajes("Estoy peleando");
 
     }
@@ -299,7 +301,9 @@ public class ControladorJuego implements ActionListener{
                             juego.getPersonaje().setEnemigoActual(enemigos.get(i));
                             VentanaEscogerHabilidades ventana = new VentanaEscogerHabilidades();
                             ControladorEscogerHabilidades cea = new ControladorEscogerHabilidades(controlador,juego.getPersonaje().getEnemigoActual().getAtaque().size(),ventana);
-                           // System.out.println(controlador.getJuego().getPersonaje().getApariencia().getEsfuerzo());
+                            ControladorVentanaPrincipal.vp.goTo("Peleas");
+                                
+        // System.out.println(controlador.getJuego().getPersonaje().getApariencia().getEsfuerzo());
 //pelear();
                             pelear=true;
 
@@ -345,7 +349,7 @@ public class ControladorJuego implements ActionListener{
             
             @Override
             public void run(){
-                int dia=1;
+                
                 while(estado == true){
                     ControladorVentanaPrincipal.vp.lblDia.setText(Integer.toString(dia));
                     Calendar fecha = new GregorianCalendar();
@@ -520,7 +524,7 @@ public class ControladorJuego implements ActionListener{
                             int resul=preguntarEnfermedad(e.getNombre());
                             enfermo=false;
                             if(resul==0){
-                                juego.getPersonaje().getEnfermedadesActivas().add(e);
+                                juego.getPersonaje().getEnfermedadesActivas().put(e,dia);
                                 ControladorVentanaPrincipal.vp.btnCurarEnfermedad.setVisible(true);
                                 ControladorVentanaPrincipal.vp.btnCurarEnfermedad.setEnabled(true);
                             }
@@ -652,10 +656,16 @@ public class ControladorJuego implements ActionListener{
                     } catch (InterruptedException ex) {
                         Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    for(int i=0; i<juego.getPersonaje().getEnfermedadesActivas().size();i++){
-                        System.out.println("Enfermo: "+juego.getPersonaje().getEnfermedadesActivas().get(i).getNombre());
-                        juego.getPersonaje().actualizar(juego.getPersonaje().getEnfermedadesActivas().get(i).Enfermarse());
+                    for(HashMap.Entry<Enfermedad,Integer> entry: juego.getPersonaje().getEnfermedadesActivas().entrySet())
+                    {
+                        //System.out.println("Enfermo: "+juego.getPersonaje().getEnfermedadesActivas().get(i).getNombre());
+                        juego.getPersonaje().actualizar(entry.getKey().Enfermarse());
                         juego.getPersonaje().imprimirEstado();
+                        if(Math.abs(entry.getValue()-dia)>=3){
+                            JOptionPane.showMessageDialog(null, "Usted ha muerto");
+                            ControladorVentanaPrincipal.vp.setVisible(false);
+    
+                        }
                     }
                 }
                 
