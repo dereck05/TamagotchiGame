@@ -33,8 +33,8 @@ public class ControladorCurar implements ActionListener {
     }
     public void llenarEnfermedades(){
         DefaultListModel modelo = new DefaultListModel();
-        for(int i = 0; i<controlador.getJuego().getPersonaje().getEnfermedadesActivas().size(); i++){
-              modelo.addElement(controlador.getJuego().getPersonaje().getEnfermedadesActivas().get(i).getNombre());
+        for(Enfermedad enfermedad: controlador.getJuego().getPersonaje().getEnfermedadesActivas().keySet()){
+              modelo.addElement(enfermedad.getNombre());
                 
         }
         this.curar.listEnfermedad.setModel(modelo);
@@ -53,9 +53,15 @@ public class ControladorCurar implements ActionListener {
     }
     public void seleccionarEnfermedad(){
         if(!curar.listEnfermedad.isSelectionEmpty()){
-            int seleccionado = curar.listEnfermedad.getSelectedIndex();
-            enfermedadSeleccionada=controlador.getJuego().getPersonaje().getEnfermedadesActivas().get(seleccionado);
-            llenarCuras(enfermedadSeleccionada);
+            String seleccionado = curar.listEnfermedad.getSelectedValue();
+            for(Enfermedad enfermedad: controlador.getJuego().getPersonaje().getEnfermedadesActivas().keySet()){
+                if(seleccionado.equals(enfermedad.getNombre())){
+                    enfermedadSeleccionada = enfermedad;
+                    llenarCuras(enfermedadSeleccionada);
+                    break;
+                }
+            }
+
             
         }
     }

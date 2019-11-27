@@ -88,7 +88,7 @@ public class VentanaPelear extends javax.swing.JFrame {
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblAlegria1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblAlegria1.setText("Alegría");

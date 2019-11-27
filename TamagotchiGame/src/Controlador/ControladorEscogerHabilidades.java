@@ -59,6 +59,7 @@ public class ControladorEscogerHabilidades implements ActionListener {
         if(habilidadesEscogidas==numHabilidades){
             VentanaPelear ventana = new VentanaPelear();
             ControladorPelear cp = new ControladorPelear(controlador,ventana,habilidades);
+            this.ventana.setVisible(false);
         }
     }
     
