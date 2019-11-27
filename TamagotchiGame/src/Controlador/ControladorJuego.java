@@ -38,6 +38,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -282,6 +283,7 @@ public class ControladorJuego implements ActionListener{
         hiloMedicamentos.start();
     }
     public void pelearH(ControladorJuego controlador){
+        
         hiloPelear = new Thread(){
             @Override
             public void run(){
@@ -296,12 +298,23 @@ public class ControladorJuego implements ActionListener{
                         int input = JOptionPane.showConfirmDialog(null, "¿Desea aceptar la pelea?");
                         // 0=yes, 1=no, 2=cancel
                         if(input==0){
+                            
+                            //Va al lugar de peleas
+                            ControladorVentanaPrincipal.vp.goTo("Peleas");
+                            try {
+                                TimeUnit.MILLISECONDS.sleep(500);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
+                            
+                            
                             addEnemigos();
                             int i= (int)Math.floor(Math.random()*enemigos.size());
                             juego.getPersonaje().setEnemigoActual(enemigos.get(i));
                             VentanaEscogerHabilidades ventana = new VentanaEscogerHabilidades();
                             ControladorEscogerHabilidades cea = new ControladorEscogerHabilidades(controlador,juego.getPersonaje().getEnemigoActual().getAtaque().size(),ventana);
-                            ControladorVentanaPrincipal.vp.goTo("Peleas");
+                            
                                 
         // System.out.println(controlador.getJuego().getPersonaje().getApariencia().getEsfuerzo());
 //pelear();
