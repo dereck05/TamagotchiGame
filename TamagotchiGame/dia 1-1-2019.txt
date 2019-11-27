@@ -229,6 +229,17 @@ Dormir: energia: +20, esfuerzo: -10, rapidez: 0
 Dormir: energia: +20, esfuerzo: -10, rapidez: 0
 Dormir: energia: +20, esfuerzo: -10, rapidez: 0
 Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Orinar: liquidos: -20, rapidez: +20
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Meditar: salud mental: 25, alegria: 10
+Meditar: salud mental: 25, alegria: 10
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Meditar: salud mental: 25, alegria: 10
+Socilaizar: salud mental: +20, alegria: +15
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
 Meditar: salud mental: 25, alegria: 10
 Dormir: energia: +20, esfuerzo: -10, rapidez: 0
 Meditar: salud mental: 25, alegria: 10
