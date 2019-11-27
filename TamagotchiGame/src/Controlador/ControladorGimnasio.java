@@ -7,6 +7,7 @@ package Controlador;
 
 import static Controlador.ControladorVentanaPrincipal.vp;
 import Vista.VentanaGimnasio;
+import Vista.VentanaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
@@ -18,9 +19,10 @@ import javax.swing.DefaultListModel;
 public class ControladorGimnasio implements ActionListener {
     VentanaGimnasio gimnasio;
     ControladorJuego controlador;
-
-    public ControladorGimnasio(VentanaGimnasio gimnasio, ControladorJuego contralador) {
+    VentanaPrincipal vp;
+    public ControladorGimnasio(VentanaGimnasio gimnasio, ControladorJuego contralador,VentanaPrincipal v) {
         this.gimnasio = gimnasio;
+        this.vp = v;
         this.controlador = contralador;
         this.gimnasio.btnSeleccionar.addActionListener(this);
         llenarLista();

@@ -9,6 +9,7 @@ import Alimento.Alimento;
 import Medicamentos.Ibuprofeno;
 import Medicamentos.Medicamento;
 import Vista.VentanaHuerto;
+import Vista.VentanaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.DefaultListModel;
@@ -21,8 +22,9 @@ import javax.swing.JOptionPane;
 public class ControladorHuerto implements  ActionListener {
     VentanaHuerto huerto;
     ControladorJuego controlador;
-
-    public ControladorHuerto(VentanaHuerto huerto, ControladorJuego controlador) {
+    VentanaPrincipal vp;
+    public ControladorHuerto(VentanaHuerto huerto, ControladorJuego controlador,VentanaPrincipal v) {
+        this.vp = v;
         this.huerto = huerto;
         this.controlador = controlador;
         this.huerto.btnSeleccionar1.addActionListener(this);

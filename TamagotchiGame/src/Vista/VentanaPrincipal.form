@@ -383,8 +383,11 @@
     </Container>
     <Component class="javax.swing.JLabel" name="lblPersonaje">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Imagen personaje"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -664,6 +667,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Imagen amigo/enemigo"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel16">
       <Properties>

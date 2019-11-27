@@ -66,6 +66,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 x = 900;
                 y = 190;
                 break;
+            case "Jardin":
+                x = 100;
+                y = 450;
+                break;
+                    
             default:
                 break;
         }
@@ -225,7 +230,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         panelImagen.add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        lblPersonaje.setText("Imagen personaje");
+        lblPersonaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Estado");
@@ -675,8 +680,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public javax.swing.JLabel lblMinutos;
     public javax.swing.JLabel lblMusculo;
     public javax.swing.JLabel lblPeleas;
-    private javax.swing.JLabel lblPersonaje;
-    private javax.swing.JLabel lblPersonaje1;
+    public javax.swing.JLabel lblPersonaje;
+    public javax.swing.JLabel lblPersonaje1;
     public javax.swing.JLabel lblPiscina;
     public javax.swing.JLabel lblRapidez;
     public javax.swing.JLabel lblSaludFisica;

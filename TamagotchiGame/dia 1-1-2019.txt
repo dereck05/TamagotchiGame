@@ -141,3 +141,21 @@ Comer: energia: 15
 Comer: energia: 15
 Comer: energia: 15
 Comer: energia: 20
+Orinar: liquidos: -20, rapidez: +20
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Defecar: comida injerida: -10, rapidez: +35
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Orinar: liquidos: -20, rapidez: +20
+Orinar: liquidos: -20, rapidez: +20
+Orinar: liquidos: -20, rapidez: +20
+Orinar: liquidos: -20, rapidez: +20
+Orinar: liquidos: -20, rapidez: +20
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Orinar: liquidos: -20, rapidez: +20
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Orinar: liquidos: -20, rapidez: +20
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Orinar: liquidos: -20, rapidez: +20

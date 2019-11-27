@@ -8,6 +8,7 @@ package Controlador;
 import Alimento.Alimento;
 import static Controlador.ControladorVentanaPrincipal.vp;
 import Vista.VentanaComedor;
+import Vista.VentanaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -22,9 +23,10 @@ public class ControladorComedor implements ActionListener {
     VentanaComedor comedor;
     ControladorJuego controlador;
     DefaultTableModel dtm;
-
-    public ControladorComedor(VentanaComedor comedor, ControladorJuego controlador) {
+    VentanaPrincipal vp;
+    public ControladorComedor(VentanaComedor comedor, ControladorJuego controlador,VentanaPrincipal v) {
         this.comedor = comedor;
+        this.vp = v;
         this.controlador = controlador;
         this.comedor.btnComer.addActionListener(this);
         llenarTabla();

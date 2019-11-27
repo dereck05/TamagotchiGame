@@ -8,6 +8,7 @@ package Controlador;
 import Alimento.Alimento;
 import Medicamentos.Medicamento;
 import Vista.VentanaBodega;
+import Vista.VentanaPrincipal;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,8 +19,10 @@ import javax.swing.table.DefaultTableModel;
 public class ControladorBodega {
     ControladorJuego controlador;
     VentanaBodega bodega;
+    VentanaPrincipal vp;
     
-    public ControladorBodega(ControladorJuego controlador, VentanaBodega bodega) {
+    public ControladorBodega(ControladorJuego controlador, VentanaBodega bodega,VentanaPrincipal v) {
+        this.vp = v;
         this.controlador = controlador;
         this.bodega = bodega;
         llenarAlimentos();

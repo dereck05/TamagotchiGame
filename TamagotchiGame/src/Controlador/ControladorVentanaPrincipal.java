@@ -17,12 +17,14 @@ import Vista.VentanaGimnasio;
 import Vista.VentanaHuerto;
 import Vista.VentanaPrincipal;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.HashMap;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -126,7 +128,13 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
         public void mouseClicked(MouseEvent e){  
            vp.goTo("Piscina");
         }  
-        }); 
+        });
+        vp.lblPiscina.addMouseListener(new MouseAdapter(){  
+        public void mouseClicked(MouseEvent e){  
+           vp.goTo("Jardin");
+           meditar();
+        }  
+        });
     }
     
     
@@ -134,36 +142,52 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
     public void meditar(){
         controlador.estrategia("Meditar");
         controlador.actualizarPorcentajes("Estoy meditando");
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/meditar.jpg"));
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);  // transform it back
+        vp.lblPersonaje.setIcon(imageIcon);
     }
     //Llamar cuando toca el cuarto
     public void dormir(){
         controlador.estrategia("Dormir");
         controlador.actualizarPorcentajes("Estoy durmiendo");
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/dormir.jpg"));
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);  // transform it back
+        vp.lblPersonaje.setIcon(imageIcon);
+        
     }
     //Llamar cuando usa el baño
     public void usarBaño(){
         VentanaBaño ventana = new VentanaBaño();
-        ControladorVentanaBaño cvb = new ControladorVentanaBaño(ventana,controlador);
+        ControladorVentanaBaño cvb = new ControladorVentanaBaño(ventana,controlador,vp);
     }
     //Llamar cuando va al gimnasio
     public void ejercitarse(){
         VentanaGimnasio ventana = new VentanaGimnasio();
-        ControladorGimnasio cg = new ControladorGimnasio(ventana,controlador);
+        ControladorGimnasio cg = new ControladorGimnasio(ventana,controlador,vp);
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/ejercitarse.gif"));
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);  // transform it back
+        vp.lblPersonaje.setIcon(imageIcon);
     }
     //Llamar cuando va al huerto
     public void recolectar(){
         VentanaHuerto ventana = new VentanaHuerto();
-        ControladorHuerto cg = new ControladorHuerto(ventana,controlador);
+        ControladorHuerto cg = new ControladorHuerto(ventana,controlador,vp);
     }
     //Llamar cuando va al comedor
     public void comer(){
         VentanaComedor ventana = new VentanaComedor();
-        ControladorComedor cg = new ControladorComedor(ventana,controlador);
+        ControladorComedor cg = new ControladorComedor(ventana,controlador,vp);
     }
     //Llamar cuando va a la bodega
     public void bodega(){
         VentanaBodega ventana = new VentanaBodega();
-        ControladorBodega cb = new ControladorBodega(controlador,ventana);
+        ControladorBodega cb = new ControladorBodega(controlador,ventana,vp);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
