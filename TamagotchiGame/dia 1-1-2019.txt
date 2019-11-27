@@ -353,3 +353,13 @@ Curar: peptoBismo: liquidos: 15, comida injerida: 20, salud fisica: 10, grasa: 1
 Defecar: comida injerida: -10, rapidez: +35
 Defecar: comida injerida: -10, rapidez: +35
 Orinar: liquidos: -20, rapidez: +20
+Ejercitarse: Boxeo: habilidad generada: Llave, comportamientos: musculo: +12, fuerza: +10,rapidez: +10, energia: -15, alegria: +8, grasa: -8, salud fisica: +7, salud mental: +5, esfuerzo: +12.
+Ejercitarse: Karate: habilidad generada: Golpe, comportamientos: musculo: +12, fuerza: +12, rapidez: +14, energia: -10, alegria: +10, grasa: -10, salud fisica: +8, salud mental: +8, esfuerzo: +10.
+Ejercitarse: Futbol: habilidad generada: Trueno, comportamientos: musculo: +8, fuerza: +11, rapidez: +17, energia: -12, alegria: +8, grasa: -16, salud fisica: +9, esfuerzo: +14.
+Ejercitarse: Danza: habilidad generada: Martillazo, comportamientos: musculo: +3, fuerza: +5, rapidez: +8, energia: -10, alegria: +12, grasa: -10, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Comer: energia: 20
+Comer: energia: 15
+Comer: energia: 15
+Comer: energia: 25
+Comer: energia: 10
+Comer: energia: 20

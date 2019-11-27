@@ -290,7 +290,7 @@ public class ControladorJuego implements ActionListener{
 
                 while(estado==true){
                     try {
-                        sleep(25000);
+                        sleep(40000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -335,7 +335,7 @@ public class ControladorJuego implements ActionListener{
             public void run(){
                 while(estado==true){
                     try {
-                        sleep(31000);
+                        sleep(60000);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
                     }
