@@ -243,3 +243,8 @@ Dormir: energia: +20, esfuerzo: -10, rapidez: 0
 Meditar: salud mental: 25, alegria: 10
 Dormir: energia: +20, esfuerzo: -10, rapidez: 0
 Meditar: salud mental: 25, alegria: 10
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Orinar: liquidos: -20, rapidez: +20
+Defecar: comida injerida: -10, rapidez: +35
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Atletismo: habilidad generada: SuperVelocidad, comportamientos: rapidez: +15, energia: -10, alegria: +8, grasa: -10, salud fisica: 7, salud mental: 5, esfuerzo: 10.
