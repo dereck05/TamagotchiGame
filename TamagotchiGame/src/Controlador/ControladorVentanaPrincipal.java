@@ -268,6 +268,8 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
     public void bodega(){
         VentanaBodega ventana = new VentanaBodega();
         ControladorBodega cb = new ControladorBodega(controlador,ventana,vp);
+        
+        vp.lblAuxiliar.setText("Viendo la bodega");
     }
     @Override
     public void actionPerformed(ActionEvent e) {
