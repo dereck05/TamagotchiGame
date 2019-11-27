@@ -216,7 +216,7 @@ public class ControladorJuego implements ActionListener{
        vp.lblEstatura.setText(Integer.toString(this.getPersonaje().getApariencia().getEstatura()));
        vp.lblRapidez.setText(Integer.toString(this.getPersonaje().getApariencia().getRapidez()));
        vp.lblEsfuerzo.setText(Integer.toString(this.getPersonaje().getApariencia().getEsfuerzo()));
-       
+       vp.lblEdad.setText(Integer.toString(this.getPersonaje().getEdad()));
        vp.lblAuxiliar.setText(mensaje);
     }
     public void habilidad(String option){
@@ -683,6 +683,12 @@ public class ControladorJuego implements ActionListener{
                         juego.getPersonaje().imprimirEstado();
                         if(Math.abs(entry.getValue()-dia)>=3){
                             JOptionPane.showMessageDialog(null, "Usted ha muerto");
+                            try {
+                                sleep(10000);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            System.exit(0);
                             ControladorVentanaPrincipal.vp.setVisible(false);
     
                         }
