@@ -70,10 +70,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 x = 100;
                 y = 450;
                 break;
-                    
+            case "Huerto":
+                x = 100;
+                y = 380;
+                break;
+            case "Comedor":
+                x = 300;
+                y = 370;
+                break;
+            case "Peleas":
+                x = 780;
+                y = 470;
+                break;
+            case "Futbol":
+                x = 900;
+                y = 470;
+                break;
             default:
                 break;
         }
+        
         
         for(int i = 0; i < 30; i++){
 
@@ -604,6 +620,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblPiscinaMouseClicked
 
     private void lblImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenMouseClicked
+        
         for(int i = 0; i < 30; i++){
 
             ball.headTowards(evt.getX(), evt.getY());
@@ -615,6 +632,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
             ball.travel(3.0);
         }
+        
+        
     }//GEN-LAST:event_lblImagenMouseClicked
 
     private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
