@@ -151,7 +151,7 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
         vp.lblPeleas.addMouseListener(new MouseAdapter(){  
         public void mouseClicked(MouseEvent e){  
            vp.goTo("Peleas");
-           peleas();
+           
         }  
         });
         vp.lblCocina.addMouseListener(new MouseAdapter(){  
@@ -193,10 +193,7 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
         vp.lblPersonaje.setIcon(imageIcon);
         vp.lblAuxiliar.setText("Estoy nadando");
     }
-    public void peleas(){
-        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/pelear.gif"));
-        vp.lblPersonaje.setIcon(imageIcon);
-    }
+    
     public void cocina(){
         ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/cocinar.gif"));
         vp.lblPersonaje.setIcon(imageIcon);

@@ -194,7 +194,6 @@ public class ControladorJuego implements ActionListener{
         proxy.guardar();
     }
     public void estrategia(String option){
-        System.out.println(option);
         IStrategy resul = this.fachada.crearEstrategia(option);
         HashMap<String,Integer> valores = resul.ejecutar();
         this.juego.getPersonaje().actualizar(valores);
@@ -302,7 +301,7 @@ public class ControladorJuego implements ActionListener{
                             //Va al lugar de peleas
                             ControladorVentanaPrincipal.vp.goTo("Peleas");
                             try {
-                                TimeUnit.MILLISECONDS.sleep(500);
+                                Thread.sleep(3000);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -348,6 +347,7 @@ public class ControladorJuego implements ActionListener{
                             estrategia("Socializar");
                             actualizarPorcentajes("Estoy socializando con: "+amigos.get(i).getNombre());
                             socializar=true;
+                            ControladorVentanaPrincipal.vp.socialiarImg();
                         }
                         
                     }
@@ -515,16 +515,14 @@ public class ControladorJuego implements ActionListener{
                         }
                         if(val.containsKey("Comida injerida")){
                             int num = val.get("Comida injerida");
-                            System.out.println(num);
-                            System.out.println(juego.getPersonaje().getEstado().getComidaIngerida());
-                            System.out.println(juego.getPersonaje().getEstado().getComidaIngerida()>= num);
+                            
                             if(juego.getPersonaje().getEstado().getComidaIngerida()>= num){
                                 enfermo=true;
                               //  personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
                         if(val.containsKey("Liquidos")){
-                            System.out.println("Liquidos");
+                            
                             int num = val.get("Liquidos");
                             if(juego.getPersonaje().getEstado().getLiquidos()>= num){
                                 enfermo=true;
@@ -791,7 +789,6 @@ public class ControladorJuego implements ActionListener{
     public ArrayList<Habilidad> generarHabilidades(){
         ArrayList<Habilidad> habilidadesEnemigo = new ArrayList<>();
         int numHabilidades= (int)Math.floor(Math.random()*juego.getPersonaje().getAtaque().size()+1);
-        System.out.println(numHabilidades);
         int hab;
         for (int i=0; i<numHabilidades;i++){
             hab = (int)Math.floor(Math.random()*habilidades.size());

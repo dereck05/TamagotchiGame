@@ -5,10 +5,12 @@
  */
 package Vista;
 
+import static Controlador.ControladorVentanaPrincipal.vp;
 import java.awt.Graphics;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -39,6 +41,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ball.travel(4.0);
         ball.draw(g);
     }
+    public void socialiarImg(){
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/socializar1.gif"));
+        vp.lblPersonaje.setIcon(imageIcon);
+        ImageIcon imageIcon2 = new javax.swing.ImageIcon(getClass().getResource("/Vista/socializar2.gif"));
+        vp.lblPersonaje1.setIcon(imageIcon2);
+    }
     
     public void goTo(String lugar){
         int x = 0;
@@ -49,46 +57,61 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             case "Cuarto":
                 x = 100;
                 y = 110;
-              break;
+                vp.lblPersonaje1.setIcon(null);
+                break;
             case "Baño":
                 x = 300;
                 y = 50;
+                vp.lblPersonaje1.setIcon(null);
                 break;
             case "Bodega":
                 x = 600;
                 y = 110;
+                vp.lblPersonaje1.setIcon(null);
                 break;
             case "Gimnasio":
                 x = 780;
                 y = 190;
+                vp.lblPersonaje1.setIcon(null);
                 break;
             case "Piscina":
                 x = 900;
                 y = 190;
+                vp.lblPersonaje1.setIcon(null);
                 break;
             case "Jardin":
                 x = 100;
                 y = 450;
+                vp.lblPersonaje1.setIcon(null);
                 break;
             case "Huerto":
                 x = 100;
                 y = 330;
+                vp.lblPersonaje1.setIcon(null);
                 break;
             case "Comedor":
                 x = 330;
                 y = 330;
+                vp.lblPersonaje1.setIcon(null);
                 break;
             case "Cocina":
                 x = 500;
                 y = 450;
+                vp.lblPersonaje1.setIcon(null);
                 break;
             case "Peleas":
                 x = 800;
                 y = 450;
+                ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/pelear.gif"));
+                vp.lblPersonaje.setIcon(imageIcon);
+                ImageIcon imageIcon2 = new javax.swing.ImageIcon(getClass().getResource("/Vista/enemigo.gif"));
+                vp.lblPersonaje1.setIcon(imageIcon2);
+                vp.lblAuxiliar.setText("Estoy peleando");
                 break;
             case "Futbol":
                 x = 950;
                 y = 450;
+                vp.lblPersonaje1.setIcon(null);
                 break;
             default:
                 break;
@@ -358,7 +381,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblAuxiliar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblAuxiliar.setText("ZZZZZZZ");
 
-        lblPersonaje1.setText("Imagen amigo/enemigo");
+        lblPersonaje1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel16.setText("Tiempo de juego:");
@@ -638,6 +661,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
         lblAuxiliar.setText("Sin moverme");
+        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/quieto.gif"));
+        vp.lblPersonaje.setIcon(imageIcon);
         
     }//GEN-LAST:event_lblImagenMouseClicked
 

@@ -717,7 +717,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPersonaje1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Imagen amigo/enemigo"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
