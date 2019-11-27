@@ -94,6 +94,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 break;
         }
         
+        
         for(int i = 0; i < 30; i++){
 
             ball.headTowards(x, y);
@@ -623,6 +624,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblPiscinaMouseClicked
 
     private void lblImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagenMouseClicked
+        
         for(int i = 0; i < 30; i++){
 
             ball.headTowards(evt.getX(), evt.getY());
@@ -634,6 +636,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
             ball.travel(3.0);
         }
+        
+        lblAuxiliar.setText("Sin moverme");
+        
     }//GEN-LAST:event_lblImagenMouseClicked
 
     private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed

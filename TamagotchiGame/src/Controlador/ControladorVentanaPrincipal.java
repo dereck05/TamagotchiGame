@@ -213,6 +213,8 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
         Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);  // transform it back
         vp.lblPersonaje.setIcon(imageIcon);
+        
+        vp.lblAuxiliar.setText("Meditando");
     }
     //Llamar cuando toca el cuarto
     public void dormir(){
@@ -225,11 +227,15 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
         imageIcon = new ImageIcon(newimg);  // transform it back
         vp.lblPersonaje.setIcon(imageIcon);
         
+        vp.lblAuxiliar.setText("ZZZZZZZ");
+        
     }
     //Llamar cuando usa el baño
     public void usarBaño(){
         VentanaBaño ventana = new VentanaBaño();
         ControladorVentanaBaño cvb = new ControladorVentanaBaño(ventana,controlador,vp);
+        
+        vp.lblAuxiliar.setText("Usando el baño");
     }
     //Llamar cuando va al gimnasio
     public void ejercitarse(){
@@ -238,11 +244,15 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
         ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/ejercitarse.gif"));
 
         vp.lblPersonaje.setIcon(imageIcon);
+        
+        vp.lblAuxiliar.setText("Haciendo ejercicio");
     }
     //Llamar cuando va al huerto
     public void recolectar(){
         VentanaHuerto ventana = new VentanaHuerto();
         ControladorHuerto cg = new ControladorHuerto(ventana,controlador,vp);
+        
+        vp.lblAuxiliar.setText("Recolectando");
     }
     //Llamar cuando va al comedor
     public void comer(){
@@ -251,16 +261,13 @@ public class ControladorVentanaPrincipal implements ActionListener, MouseListene
         ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/comer.gif"));
 
         vp.lblPersonaje.setIcon(imageIcon);
+        
+        vp.lblAuxiliar.setText("Comiendo");
     }
     //Llamar cuando va a la bodega
     public void bodega(){
         VentanaBodega ventana = new VentanaBodega();
         ControladorBodega cb = new ControladorBodega(controlador,ventana,vp);
-        ImageIcon imageIcon = new javax.swing.ImageIcon(getClass().getResource("/Vista/bodega.jpg"));
-        Image image = imageIcon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-        imageIcon = new ImageIcon(newimg);  // transform it back
-        vp.lblPersonaje.setIcon(imageIcon);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
