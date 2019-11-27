@@ -37,7 +37,7 @@ public class VentanaCurar extends javax.swing.JFrame {
         listCura = new javax.swing.JList<>();
         btnCurar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         listEnfermedad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         listEnfermedad.setModel(new javax.swing.AbstractListModel<String>() {

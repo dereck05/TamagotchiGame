@@ -6,6 +6,7 @@
 package Controlador;
 
 import Enfermedades.Enfermedad;
+import Medicamentos.ICura;
 import Medicamentos.Medicamento;
 import Vista.VentanaCurar;
 import java.awt.event.ActionEvent;
@@ -70,9 +71,14 @@ public class ControladorCurar implements ActionListener {
         DefaultListModel modelo = new DefaultListModel();
         for(int i = 0; i<enfermedad.getCuras().size(); i++){
               if(enfermedad.getCuras().get(i) instanceof Medicamento){
+                  
                   Medicamento m= (Medicamento)enfermedad.getCuras().get(i);
-                  if(controlador.getJuego().getBodega().getMedicamentos().containsKey(m)){
-                    modelo.addElement(enfermedad.getCuras().get(i).getNombre());
+                  System.out.println(m.getNombre());
+                  for(Medicamento medicamento: controlador.getJuego().getBodega().getMedicamentos().keySet()){
+                       if(medicamento.getNombre().equals(m.getNombre())){
+                           modelo.addElement(enfermedad.getCuras().get(i).getNombre());
+                           break;
+                       }
                   }
               }
               else{
@@ -85,10 +91,17 @@ public class ControladorCurar implements ActionListener {
     }
     public void seleccionarCura(){
         if(!curar.listCura.isSelectionEmpty()){
-            int seleccionado = curar.listCura.getSelectedIndex();
-            controlador.medicarse(enfermedadSeleccionada.getCuras().get(seleccionado));
-            controlador.getJuego().getPersonaje().getEnfermedadesActivas().remove(seleccionado);
-            JOptionPane.showMessageDialog(curar, "Enfermedad curada con éxito");
+            String seleccionado = curar.listCura.getSelectedValue();
+            ICura curaSeleccionada;
+            for(ICura cura: enfermedadSeleccionada.getCuras()){
+                    if(seleccionado.equals(cura.getNombre())){
+                        controlador.medicarse(cura);
+                        controlador.getJuego().getPersonaje().getEnfermedadesActivas().remove(enfermedadSeleccionada);
+                        JOptionPane.showMessageDialog(curar, "Enfermedad curada con éxito");
+                        break;
+                    }
+            }
+            
             
         }
     }

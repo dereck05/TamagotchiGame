@@ -85,8 +85,8 @@ public class ControladorHuerto implements  ActionListener {
                 if(seleccionado.equals(key.getNombre())){
                     medicamento=key;
                     
-                    controlador.getJuego().getHuerto().getMedicamentos().remove(key);
-                    controlador.getJuego().getBodega().añadirMedicamento(key);
+                    controlador.getJuego().getHuerto().getMedicamentos().remove(medicamento);
+                    controlador.getJuego().getBodega().añadirMedicamento(medicamento);
                     JOptionPane.showMessageDialog(huerto, "Medicamento recolectado con éxito");
                     break;
                 }
