@@ -27,6 +27,7 @@ public class ControladorBodega {
         this.bodega = bodega;
         llenarAlimentos();
         llenarMedicamentos();
+        this.bodega.setVisible(true);
     }
     public void llenarAlimentos(){
          DefaultTableModel dtm= new DefaultTableModel();
@@ -50,7 +51,7 @@ public class ControladorBodega {
         for(HashMap.Entry<Medicamento,Integer> entry : controlador.getJuego().getBodega().getMedicamentos().entrySet()){
             String[] row = new String[2];
             row[0]=entry.getKey().getNombre();
-            row[2]=Integer.toString(entry.getValue());
+            row[1]=Integer.toString(entry.getValue());
             dtm.addRow(row);
             
         }

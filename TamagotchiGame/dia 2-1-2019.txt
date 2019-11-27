@@ -1,2 +1,15 @@
 Enfermarse: Depresion: comportamientos: salud mental: -20, energia: -15, alegria: -10, porcentajes aparicion: salud mental: 5, alegria: 5, energia: 2, curas: yoga, loperamida
 Socilaizar: salud mental: +20, alegria: +15
+Comer: energia: 15
+Ejercitarse: Boxeo: habilidad generada: Llave, comportamientos: musculo: +12, fuerza: +10,rapidez: +10, energia: -15, alegria: +8, grasa: -8, salud fisica: +7, salud mental: +5, esfuerzo: +12.
+Comer: energia: 15
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Defecar: comida injerida: -10, rapidez: +35
+Orinar: liquidos: -20, rapidez: +20
+Orinar: liquidos: -20, rapidez: +20
+Comer: energia: 15
+Comer: energia: 20

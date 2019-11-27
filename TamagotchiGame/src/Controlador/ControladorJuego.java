@@ -435,6 +435,7 @@ public class ControladorJuego implements ActionListener{
                     boolean enfermo= false;
                     for(Enfermedad e : enfermedades){
                         HashMap<String,Integer> val = e.generarPorcentajeAparacion();
+                        
                         if(val.containsKey("Musculo")){
                             int num = val.get("Musculo");
                             if(juego.getPersonaje().getApariencia().getMusculo()<= num){  
@@ -443,77 +444,81 @@ public class ControladorJuego implements ActionListener{
                             }
 
                         }
-                        else if(val.containsKey("Grasa")){
+                        if(val.containsKey("Grasa")){
                             int num = val.get("Grasa");
                             if(juego.getPersonaje().getApariencia().getGrasa()>= num){
                                 enfermo=true;
                                 //personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        else if(val.containsKey("Fuerza")){
+                        if(val.containsKey("Fuerza")){
                             int num = val.get("Fuerza");
                             if(juego.getPersonaje().getApariencia().getFuerza()<= num){
                                 enfermo=true;
                                // personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        else if(val.containsKey("Estatura")){
+                        if(val.containsKey("Estatura")){
                             int num = val.get("Estatura");
                             if(juego.getPersonaje().getApariencia().getEstatura()<= num){
                                 enfermo=true;
                                 //personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        else if(val.containsKey("Rapidez")){
+                        if(val.containsKey("Rapidez")){
                             int num = val.get("Rapidez");
                             if(juego.getPersonaje().getApariencia().getRapidez()<= num){
                                 enfermo=true;
                                 //personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        else if(val.containsKey("Esfuerzo")){
+                        if(val.containsKey("Esfuerzo")){
                             int num = val.get("Esfuerzo");
                             if(juego.getPersonaje().getApariencia().getEsfuerzo()>= num){
                                 enfermo=true;
                               //  personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        else if(val.containsKey("Energia")){
+                        if(val.containsKey("Energia")){
                             int num = val.get("Energia");
                             if(juego.getPersonaje().getEstado().getEnergia()<= num){
                                 enfermo=true;
                               //  personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        else if(val.containsKey("Salud fisica")){
+                        if(val.containsKey("Salud fisica")){
                             int num = val.get("Salud fisica");
                             if(juego.getPersonaje().getEstado().getSaludFisica()<= num){
                                 enfermo=true;
                                 //personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        else if(val.containsKey("Salud mental")){
+                        if(val.containsKey("Salud mental")){
                             int num = val.get("Salud mental");
                             if(juego.getPersonaje().getEstado().getSaludMental()<= num){
                                 enfermo=true;
                                // personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        else if(val.containsKey("comida injerida")){
-                            int num = val.get("comida injerida");
+                        if(val.containsKey("Comida injerida")){
+                            int num = val.get("Comida injerida");
+                            System.out.println(num);
+                            System.out.println(juego.getPersonaje().getEstado().getComidaIngerida());
+                            System.out.println(juego.getPersonaje().getEstado().getComidaIngerida()>= num);
                             if(juego.getPersonaje().getEstado().getComidaIngerida()>= num){
                                 enfermo=true;
                               //  personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        else if(val.containsKey("Liquidos")){
+                        if(val.containsKey("Liquidos")){
+                            System.out.println("Liquidos");
                             int num = val.get("Liquidos");
                             if(juego.getPersonaje().getEstado().getLiquidos()>= num){
                                 enfermo=true;
                               //  personaje.getEnfermedadesActivas().add(e); 
                             }
                         }
-                        else if(val.containsKey("Alegria")){
+                        if(val.containsKey("Alegria")){
                             int num = val.get("Alegria");
                             if(juego.getPersonaje().getEstado().getAlegria()<= num){
                                 enfermo=true;
@@ -521,8 +526,10 @@ public class ControladorJuego implements ActionListener{
                             }
                         }
                         if(enfermo){
+                            if(!juego.getPersonaje().getEnfermedadesActivas().containsKey(e)){
                             int resul=preguntarEnfermedad(e.getNombre());
                             enfermo=false;
+                            
                             if(resul==0){
                                 juego.getPersonaje().getEnfermedadesActivas().put(e,dia);
                                 ControladorVentanaPrincipal.vp.btnCurarEnfermedad.setVisible(true);
@@ -533,7 +540,7 @@ public class ControladorJuego implements ActionListener{
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(ControladorJuego.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                        }
+                        }}
                     }
                 }
                 
