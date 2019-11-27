@@ -141,3 +141,90 @@ Comer: energia: 15
 Comer: energia: 15
 Comer: energia: 15
 Comer: energia: 20
+Ejercitarse: Atletismo: habilidad generada: SuperVelocidad, comportamientos: rapidez: +15, energia: -10, alegria: +8, grasa: -10, salud fisica: 7, salud mental: 5, esfuerzo: 10.
+Ejercitarse: Futbol: habilidad generada: Trueno, comportamientos: musculo: +8, fuerza: +11, rapidez: +17, energia: -12, alegria: +8, grasa: -16, salud fisica: +9, esfuerzo: +14.
+Ejercitarse: Karate: habilidad generada: Golpe, comportamientos: musculo: +12, fuerza: +12, rapidez: +14, energia: -10, alegria: +10, grasa: -10, salud fisica: +8, salud mental: +8, esfuerzo: +10.
+Ejercitarse: Danza: habilidad generada: Martillazo, comportamientos: musculo: +3, fuerza: +5, rapidez: +8, energia: -10, alegria: +12, grasa: -10, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Boxeo: habilidad generada: Llave, comportamientos: musculo: +12, fuerza: +10,rapidez: +10, energia: -15, alegria: +8, grasa: -8, salud fisica: +7, salud mental: +5, esfuerzo: +12.
+Ejercitarse: Karate: habilidad generada: Golpe, comportamientos: musculo: +12, fuerza: +12, rapidez: +14, energia: -10, alegria: +10, grasa: -10, salud fisica: +8, salud mental: +8, esfuerzo: +10.
+Ejercitarse: Judo: habilidad generada: Patada, comportamientos: musculo: +10, fuerza: +12, rapidez: +15, energia: -15, alegria: +12, grasa: -15, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Ejercitarse: Atletismo: habilidad generada: SuperVelocidad, comportamientos: rapidez: +15, energia: -10, alegria: +8, grasa: -10, salud fisica: 7, salud mental: 5, esfuerzo: 10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Atletismo: habilidad generada: SuperVelocidad, comportamientos: rapidez: +15, energia: -10, alegria: +8, grasa: -10, salud fisica: 7, salud mental: 5, esfuerzo: 10.
+Ejercitarse: Judo: habilidad generada: Patada, comportamientos: musculo: +10, fuerza: +12, rapidez: +15, energia: -15, alegria: +12, grasa: -15, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Ejercitarse: Danza: habilidad generada: Martillazo, comportamientos: musculo: +3, fuerza: +5, rapidez: +8, energia: -10, alegria: +12, grasa: -10, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Ciclismo: habilidad generada: AlaDeAcero, comportamientos:energia: -15, alegria: +8, grasa: -10, salud fisica: +7, esfuerzo: +10.
+Ejercitarse: Karate: habilidad generada: Golpe, comportamientos: musculo: +12, fuerza: +12, rapidez: +14, energia: -10, alegria: +10, grasa: -10, salud fisica: +8, salud mental: +8, esfuerzo: +10.
+Ejercitarse: Judo: habilidad generada: Patada, comportamientos: musculo: +10, fuerza: +12, rapidez: +15, energia: -15, alegria: +12, grasa: -15, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Futbol: habilidad generada: Trueno, comportamientos: musculo: +8, fuerza: +11, rapidez: +17, energia: -12, alegria: +8, grasa: -16, salud fisica: +9, esfuerzo: +14.
+Ejercitarse: Judo: habilidad generada: Patada, comportamientos: musculo: +10, fuerza: +12, rapidez: +15, energia: -15, alegria: +12, grasa: -15, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Ejercitarse: Boxeo: habilidad generada: Llave, comportamientos: musculo: +12, fuerza: +10,rapidez: +10, energia: -15, alegria: +8, grasa: -8, salud fisica: +7, salud mental: +5, esfuerzo: +12.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Danza: habilidad generada: Martillazo, comportamientos: musculo: +3, fuerza: +5, rapidez: +8, energia: -10, alegria: +12, grasa: -10, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Ejercitarse: Karate: habilidad generada: Golpe, comportamientos: musculo: +12, fuerza: +12, rapidez: +14, energia: -10, alegria: +10, grasa: -10, salud fisica: +8, salud mental: +8, esfuerzo: +10.
+Ejercitarse: Atletismo: habilidad generada: SuperVelocidad, comportamientos: rapidez: +15, energia: -10, alegria: +8, grasa: -10, salud fisica: 7, salud mental: 5, esfuerzo: 10.
+Ejercitarse: Ciclismo: habilidad generada: AlaDeAcero, comportamientos:energia: -15, alegria: +8, grasa: -10, salud fisica: +7, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Atletismo: habilidad generada: SuperVelocidad, comportamientos: rapidez: +15, energia: -10, alegria: +8, grasa: -10, salud fisica: 7, salud mental: 5, esfuerzo: 10.
+Ejercitarse: Futbol: habilidad generada: Trueno, comportamientos: musculo: +8, fuerza: +11, rapidez: +17, energia: -12, alegria: +8, grasa: -16, salud fisica: +9, esfuerzo: +14.
+Ejercitarse: Danza: habilidad generada: Martillazo, comportamientos: musculo: +3, fuerza: +5, rapidez: +8, energia: -10, alegria: +12, grasa: -10, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Ciclismo: habilidad generada: AlaDeAcero, comportamientos:energia: -15, alegria: +8, grasa: -10, salud fisica: +7, esfuerzo: +10.
+Ejercitarse: Karate: habilidad generada: Golpe, comportamientos: musculo: +12, fuerza: +12, rapidez: +14, energia: -10, alegria: +10, grasa: -10, salud fisica: +8, salud mental: +8, esfuerzo: +10.
+Ejercitarse: Judo: habilidad generada: Patada, comportamientos: musculo: +10, fuerza: +12, rapidez: +15, energia: -15, alegria: +12, grasa: -15, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Danza: habilidad generada: Martillazo, comportamientos: musculo: +3, fuerza: +5, rapidez: +8, energia: -10, alegria: +12, grasa: -10, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Ejercitarse: Karate: habilidad generada: Golpe, comportamientos: musculo: +12, fuerza: +12, rapidez: +14, energia: -10, alegria: +10, grasa: -10, salud fisica: +8, salud mental: +8, esfuerzo: +10.
+Ejercitarse: Gimnasia: habilidad generada: Electrocañon, comportamientos: musculo: +15, fuerza: +15, energia: -10, alegria: +10, grasa: -20, salud fisica: +5, salud mental: +6, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Boxeo: habilidad generada: Llave, comportamientos: musculo: +12, fuerza: +10,rapidez: +10, energia: -15, alegria: +8, grasa: -8, salud fisica: +7, salud mental: +5, esfuerzo: +12.
+Ejercitarse: Karate: habilidad generada: Golpe, comportamientos: musculo: +12, fuerza: +12, rapidez: +14, energia: -10, alegria: +10, grasa: -10, salud fisica: +8, salud mental: +8, esfuerzo: +10.
+Ejercitarse: Gimnasia: habilidad generada: Electrocañon, comportamientos: musculo: +15, fuerza: +15, energia: -10, alegria: +10, grasa: -20, salud fisica: +5, salud mental: +6, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Ciclismo: habilidad generada: AlaDeAcero, comportamientos:energia: -15, alegria: +8, grasa: -10, salud fisica: +7, esfuerzo: +10.
+Ejercitarse: Karate: habilidad generada: Golpe, comportamientos: musculo: +12, fuerza: +12, rapidez: +14, energia: -10, alegria: +10, grasa: -10, salud fisica: +8, salud mental: +8, esfuerzo: +10.
+Ejercitarse: Gimnasia: habilidad generada: Electrocañon, comportamientos: musculo: +15, fuerza: +15, energia: -10, alegria: +10, grasa: -20, salud fisica: +5, salud mental: +6, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Boxeo: habilidad generada: Llave, comportamientos: musculo: +12, fuerza: +10,rapidez: +10, energia: -15, alegria: +8, grasa: -8, salud fisica: +7, salud mental: +5, esfuerzo: +12.
+Ejercitarse: Judo: habilidad generada: Patada, comportamientos: musculo: +10, fuerza: +12, rapidez: +15, energia: -15, alegria: +12, grasa: -15, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Ejercitarse: Ciclismo: habilidad generada: AlaDeAcero, comportamientos:energia: -15, alegria: +8, grasa: -10, salud fisica: +7, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Ciclismo: habilidad generada: AlaDeAcero, comportamientos:energia: -15, alegria: +8, grasa: -10, salud fisica: +7, esfuerzo: +10.
+Ejercitarse: Judo: habilidad generada: Patada, comportamientos: musculo: +10, fuerza: +12, rapidez: +15, energia: -15, alegria: +12, grasa: -15, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Ejercitarse: Danza: habilidad generada: Martillazo, comportamientos: musculo: +3, fuerza: +5, rapidez: +8, energia: -10, alegria: +12, grasa: -10, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Ejercitarse: Ciclismo: habilidad generada: AlaDeAcero, comportamientos:energia: -15, alegria: +8, grasa: -10, salud fisica: +7, esfuerzo: +10.
+Ejercitarse: Judo: habilidad generada: Patada, comportamientos: musculo: +10, fuerza: +12, rapidez: +15, energia: -15, alegria: +12, grasa: -15, salud fisica: +7, salud mental: +5, esfuerzo: +10.
+Ejercitarse: Gimnasia: habilidad generada: Electrocañon, comportamientos: musculo: +15, fuerza: +15, energia: -10, alegria: +10, grasa: -20, salud fisica: +5, salud mental: +6, esfuerzo: +10.
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
+Dormir: energia: +20, esfuerzo: -10, rapidez: 0
